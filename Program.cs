@@ -9,9 +9,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Make route urls and query strings lowercase
-builder.Services.AddRouting(options => {
-	options.LowercaseUrls = true;
-	options.LowercaseQueryStrings = true;
+builder.Services.AddRouting(options =>
+{
+    options.LowercaseUrls = true;
+    options.LowercaseQueryStrings = true;
 });
 
 var app = builder.Build();
@@ -21,7 +22,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-} else
+}
+else
 {
     // Moved here because we don't need HTTPS in development
     app.UseHttpsRedirection();
