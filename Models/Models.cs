@@ -22,7 +22,6 @@ namespace adopse_2021.Models
     {
         public long Id { get; set; }
         public string? Title { get; set; }
-        public List<EvaluationQuestion>? Questions { get; set; }
     }
 
     public class EvaluationEvent
@@ -83,6 +82,12 @@ namespace adopse_2021.Models
 
     public class CorrectAnswerQuestionAnswer : EvaluationAnswer
     {
+    }
+
+    public class Organization
+    {
+        public long Id { get; set; }
+        public string? Name { get; set; }
     }
 }
 
