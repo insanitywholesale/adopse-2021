@@ -22,11 +22,14 @@ namespace adopse_2021.Models
     {
         public long Id { get; set; }
         public string? Title { get; set; }
+        public ICollection<Evaluator>? Evaluators { get; set; }
+        public ICollection<EvaluationQuestion>? Questions { get; set; }
     }
 
     public class EvaluationEvent
     {
         public long Id { get; set; }
+        //TODO: figure out date/timestamp type
         //public string? Date { get; set; }
         public bool Passed { get; set; }
         public bool Completed { get; set; }
@@ -36,16 +39,26 @@ namespace adopse_2021.Models
     {
         public long Id { get; set; }
         public string? Content { get; set; }
-        // List of answers
     }
 
+    public class EvaluationQuestionWithSingleAnswer
+    {
+        public EvaluationAnswer? Answer { get; set; }
+    }
+
+    public class EvaluationQuestionWithMultipleAnswer
+    {
+        public ICollection<EvaluationAnswer>? Answers { get; set; }
+    }
+
+	//TODO: maybe single/multi split this too
     public class EvaluationAnswer
     {
         public long Id { get; set; }
         public bool IsCorrectAnswer { get; set; }
     }
 
-    public class OpenQuestion : EvaluationQuestion
+    public class OpenQuestion : EvaluationQuestionWithSingleAnswer
     {
     }
 
@@ -54,10 +67,12 @@ namespace adopse_2021.Models
         public string? Content { get; set; }
     }
 
-    public class MultipleChoiceQuestion : EvaluationQuestion
+    public class MultipleChoiceQuestionWithSingleAnswer : EvaluationQuestionWithSingleAnswer
     {
-        public bool HasMultipleAnswers { get; set; }
-        public int CorrectAnswersCount { get; set; }
+    }
+
+    public class MultipleChoiceQuestionWithMultipleAnswer : EvaluationQuestionWithMultipleAnswer
+    {
     }
 
     public class MultipleChoiceQuestionAnswer : EvaluationAnswer
@@ -76,7 +91,7 @@ namespace adopse_2021.Models
         public int BlankIndex { get; set; }
     }
 
-    public class CorrectAnswerQuestion : EvaluationQuestion
+    public class CorrectAnswerQuestion : EvaluationQuestionWithSingleAnswer
     {
     }
 
