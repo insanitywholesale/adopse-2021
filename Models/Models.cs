@@ -110,4 +110,3 @@ namespace adopse_2021.Models
         public string? Name { get; set; }
     }
 }
-
