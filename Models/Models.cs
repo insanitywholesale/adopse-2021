@@ -38,7 +38,7 @@ namespace adopse_2021.Models
         public Evaluation? Evaluation { get; set; }
     }
 
-    // For the inheritance stuff blow I got help from here:
+    // For the inheritance stuff below I got help from here:
     // https://stackoverflow.com/questions/66772647/how-to-deserialize-a-json-array-containing-objects-having-different-shape-in-c
     public class EvaluationQuestion
     {
