@@ -1,3 +1,5 @@
+using System;
+
 namespace adopse_2021.Models
 {
     public class Person
@@ -16,88 +18,89 @@ namespace adopse_2021.Models
     public class Evaluator : Person
     {
         public bool IsSpectator { get; set; }
+        public Organization? Organization { get; set; }
     }
 
     public class Evaluation
     {
         public long Id { get; set; }
         public string? Title { get; set; }
-        public ICollection<Evaluator>? Evaluators { get; set; }
-        public ICollection<EvaluationQuestion>? Questions { get; set; }
+        public virtual ICollection<Evaluator>? Evaluators { get; set; }
+        public virtual ICollection<EvaluationQuestion>? Questions { get; set; }
     }
 
     public class EvaluationEvent
     {
         public long Id { get; set; }
-        //TODO: figure out date/timestamp type
-        //public string? Date { get; set; }
+        public DateTime? Date { get; set; }
         public bool Passed { get; set; }
         public bool Completed { get; set; }
+        public Evaluation? Evaluation { get; set; }
     }
 
+    // For the inheritance stuff blow I got help from here:
+    // https://stackoverflow.com/questions/66772647/how-to-deserialize-a-json-array-containing-objects-having-different-shape-in-c
     public class EvaluationQuestion
     {
+        string? Type { get; }
         public long Id { get; set; }
-        public string? Content { get; set; }
+        public string? Heading { get; set; }
     }
 
-    public class EvaluationQuestionWithSingleAnswer
-    {
-        public EvaluationAnswer? Answer { get; set; }
-    }
-
-    public class EvaluationQuestionWithMultipleAnswer
-    {
-        public ICollection<EvaluationAnswer>? Answers { get; set; }
-    }
-
-	//TODO: maybe single/multi split this too
     public class EvaluationAnswer
     {
+        string? Type { get; }
         public long Id { get; set; }
         public bool IsCorrectAnswer { get; set; }
     }
 
-    public class OpenQuestion : EvaluationQuestionWithSingleAnswer
+    public class OpenQuestion : EvaluationQuestion
     {
+        public string Type => "Open";
+        public OpenAnswer? Answer { get; set; }
     }
 
-    public class OpenQuestionAnswer : EvaluationAnswer
+    public class OpenAnswer : EvaluationAnswer
     {
-        public string? Content { get; set; }
+        public string Type => "Open";
+        public string? ContentFromEvaluee { get; set; }
     }
 
-    public class MultipleChoiceQuestionWithSingleAnswer : EvaluationQuestionWithSingleAnswer
+    public class MultipleChoiceQuestion : EvaluationQuestion
     {
+        public string Type => "MultipleChoice";
+        public ICollection<MultipleChoiceAnswer>? Answers { get; set; }
     }
 
-    public class MultipleChoiceQuestionWithMultipleAnswer : EvaluationQuestionWithMultipleAnswer
+    public class MultipleChoiceAnswer : EvaluationAnswer
     {
+        public string Type => "MultipleChoice";
+        public bool SelectedByEvaluee { get; set; }
     }
 
-    public class MultipleChoiceQuestionAnswer : EvaluationAnswer
-    {
-        public int EvalueeAnswer { get; set; }
-    }
-
-    public class FillTheGapQuestion : EvaluationEvent
-    {
-        public int BlanksCount { get; set; }
-    }
-
-    public class FillTheGapQuestionAnswer : EvaluationAnswer
-    {
-        public string? Content { get; set; }
-        public int BlankIndex { get; set; }
-    }
-
-    public class CorrectAnswerQuestion : EvaluationQuestionWithSingleAnswer
-    {
-    }
-
-    public class CorrectAnswerQuestionAnswer : EvaluationAnswer
-    {
-    }
+    //TODO: add later
+    //public class FillTheGapQuestion : EvaluationEvent
+    //{
+    //    public string Type => "FillTheGap";
+    //    public int BlanksCount { get; set; }
+    //}
+    //
+    //public class FillTheGapAnswer : EvaluationAnswer
+    //{
+    //    public string Type => "FillTheGap";
+    //    public string? Content { get; set; }
+    //    public int BlankIndex { get; set; }
+    //}
+    //
+    //public class CorrectAnswerQuestion : EvaluationQuestion
+    //{
+    //    public string Type => "CorrectAnswer";
+    //}
+    //
+    //public class CorrectAnswerAnswer : EvaluationAnswer
+    //{
+    //    public string Type => "CorrectAnswer";
+    //}
 
     public class Organization
     {
