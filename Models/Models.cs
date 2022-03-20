@@ -33,6 +33,7 @@ namespace adopse_2021.Models
     {
         public long Id { get; set; }
         public DateTime? Date { get; set; }
+        public bool Active { get; set; }
         public bool Passed { get; set; }
         public bool Completed { get; set; }
         public Evaluation? Evaluation { get; set; }
@@ -69,6 +70,7 @@ namespace adopse_2021.Models
     public class MultipleChoiceQuestion : EvaluationQuestion
     {
         public string Type => "MultipleChoice";
+        public bool HasCorrectAnswer { get; set; }
         public ICollection<MultipleChoiceAnswer>? Answers { get; set; }
     }
 
