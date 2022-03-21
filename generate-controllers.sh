@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # delet dis
-rm Controllers/*
+#rm Controllers/*
 
 # evaluation event
 dotnet aspnet-codegenerator controller -async -api -f \
