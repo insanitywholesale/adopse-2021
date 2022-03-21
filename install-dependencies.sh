@@ -9,7 +9,9 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 
 dotnet tool install -g dotnet-aspnet-codegenerator
 
+# for in-memory database (also needed for basic controller codegen)
+dotnet add package Microsoft.EntityFrameworkCore.InMemory
+
 #future stuff. shhhh...
-#dotnet add package Microsoft.EntityFrameworkCore.InMemory
 #dotnet tool install -g dotnet-format
 #dotnet tool install -g Microsoft.dotnet-httprepl
