@@ -10,14 +10,14 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<EvaluationContext>(options =>
 {
-    options.UseInMemoryDatabase("EvaluationRepo");
+	options.UseInMemoryDatabase("EvaluationRepo");
 });
 
 // Make route urls and query strings lowercase
 builder.Services.AddRouting(options =>
 {
-    options.LowercaseUrls = true;
-    options.LowercaseQueryStrings = true;
+	options.LowercaseUrls = true;
+	options.LowercaseQueryStrings = true;
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -29,13 +29,13 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+	app.UseSwagger();
+	app.UseSwaggerUI();
 }
 else
 {
-    // Moved here because we don't need HTTPS in development
-    app.UseHttpsRedirection();
+	// Moved here because we don't need HTTPS in development
+	app.UseHttpsRedirection();
 }
 
 app.UseAuthorization();

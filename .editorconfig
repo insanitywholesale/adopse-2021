@@ -1,0 +1,4 @@
+# Don't use tabs for indentation.
+[*]
+indent_style = tab
+trim_trailing_whitespace = true
