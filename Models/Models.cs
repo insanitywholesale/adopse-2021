@@ -17,7 +17,6 @@ namespace adopse_2021.Models
 
 	public class Evaluator : Person
 	{
-		public bool IsSpectator { get; set; }
 		public Organization? Organization { get; set; }
 	}
 
@@ -25,7 +24,6 @@ namespace adopse_2021.Models
 	{
 		public long Id { get; set; }
 		public string? Title { get; set; }
-		public virtual ICollection<Evaluator>? Evaluators { get; set; }
 		public virtual ICollection<EvaluationQuestion>? Questions { get; set; }
 	}
 
@@ -37,6 +35,8 @@ namespace adopse_2021.Models
 		public bool Passed { get; set; }
 		public bool Completed { get; set; }
 		public Evaluation? Evaluation { get; set; }
+		public virtual ICollection<Evaluator>? Evaluators { get; set; }
+		public virtual ICollection<Evaluee>? Evaluees { get; set; }
 	}
 
 	// For the inheritance stuff below I got help from here:
