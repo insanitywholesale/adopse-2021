@@ -15,3 +15,4 @@ dotnet add package Microsoft.EntityFrameworkCore.InMemory
 #future stuff. shhhh...
 #dotnet tool install -g dotnet-format
 #dotnet tool install -g Microsoft.dotnet-httprepl
+#dotnet tool install --global dotnet-ef
