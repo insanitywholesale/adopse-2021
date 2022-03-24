@@ -77,7 +77,14 @@ namespace adopse_2021.Models
 	public class MultipleChoiceAnswer : EvaluationAnswer
 	{
 		public string Type => "MultipleChoice";
+		public string? Content { get; set; }
 		public bool SelectedByEvaluee { get; set; }
+	}
+
+	public class Q : EvaluationQuestion
+	{
+		public ICollection<OpenQuestion>? OpenQuestions { get; set; }
+		public ICollection<MultipleChoiceQuestion>? MultipleChoiceQuestions { get; set; }
 	}
 
 	//TODO: add later
