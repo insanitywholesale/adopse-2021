@@ -1,3 +1,4 @@
+/*
 #nullable disable
 using System.ComponentModel.DataAnnotations;
 
@@ -89,3 +90,4 @@ namespace adopse_2021.TrialModels
 		public EvaluationQuestion EvaluationQuestion { get; set; }
 	}
 }
+*/
