@@ -38,11 +38,11 @@ namespace adopse_2021.Models
 		public bool Active { get; set; }
 		public bool Passed { get; set; }
 		public bool Completed { get; set; }
-		
+
 		public Evaluation? Evaluation { get; set; }
 
 		public Evaluator? Evaluator { get; set; }
-	
+
 		public virtual ICollection<Evaluee>? Evaluees { get; set; }
 	}
 
