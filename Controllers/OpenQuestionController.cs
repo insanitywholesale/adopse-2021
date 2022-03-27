@@ -25,7 +25,7 @@ namespace adopse_2021.Controllers
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<OpenQuestion>>> GetOpenQuestions()
 		{
-			return await _context.OpenQuestions.ToListAsync();
+			return await _context.OpenQuestions.Include(x => x.Answer).ToListAsync();
 		}
 
 		// GET: api/OpenQuestion/5

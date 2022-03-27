@@ -21,8 +21,8 @@ namespace adopse_2021.Controllers
 		public async Task<ActionResult<Q>> GetQs()
 		{
 			var q = new Q();
-			q.OpenQuestions = await _context.OpenQuestions.ToListAsync();
-			q.MultipleChoiceQuestions = await _context.MultipleChoiceQuestions.ToListAsync();
+			q.OpenQuestions = await _context.OpenQuestions.Include(x => x.Answer).ToListAsync();
+			q.MultipleChoiceQuestions = await _context.MultipleChoiceQuestions.Include(x => x.Answers).ToListAsync();
 			return q;
 		}
 

@@ -25,7 +25,7 @@ namespace adopse_2021.Controllers
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<MultipleChoiceQuestion>>> GetMultipleChoiceQuestions()
 		{
-			return await _context.MultipleChoiceQuestions.ToListAsync();
+			return await _context.MultipleChoiceQuestions.Include(x => x.Answers).ToListAsync();
 		}
 
 		// GET: api/MultipleChoiceQuestion/5
