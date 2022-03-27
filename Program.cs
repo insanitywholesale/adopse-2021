@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<EvaluationContext>(options =>
 {
 	options.UseInMemoryDatabase("EvaluationRepo");
+	//options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection");
 });
 
 // Make route urls and query strings lowercase
