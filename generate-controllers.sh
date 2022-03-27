@@ -60,6 +60,12 @@ dotnet aspnet-codegenerator controller -async -api -f \
 	-m MultipleChoiceQuestion \
 	-dc EvaluationContext \
 	-outDir Controllers
+dotnet aspnet-codegenerator controller -async -api -f \
+	--no-build \
+	-name QController \
+	-m Q \
+	-dc EvaluationContext \
+	-outDir Controllers
 # answers
 dotnet aspnet-codegenerator controller -async -api -f \
 	--no-build \
@@ -79,3 +85,10 @@ dotnet aspnet-codegenerator controller -async -api -f \
 	-m MultipleChoiceAnswer \
 	-dc EvaluationContext \
 	-outDir Controllers
+#TODO: maybe later
+#dotnet aspnet-codegenerator controller -async -api -f \
+#	--no-build \
+#	-name AController \
+#	-m A \
+#	-dc EvaluationContext \
+#	-outDir Controllers
