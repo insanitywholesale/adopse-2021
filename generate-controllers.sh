@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "Controllers have already been generated, no need to run this"
+exit 1
+
 # delet dis
 #rm Controllers/*
 
@@ -39,9 +42,6 @@ dotnet aspnet-codegenerator controller -async -api -f \
 	-dc EvaluationContext \
 	-outDir Controllers
 # questions
-#TODO: map questions of all types to unified
-#	/api/questions and /api/evaluation/questions
-#	seems like it can't be done with codegen
 dotnet aspnet-codegenerator controller -async -api -f \
 	--no-build \
 	-name EvaluationQuestionController \
