@@ -1,5 +1,7 @@
-﻿using System.Environment;
+using System.Environment;
+
 using adopse_2021.Models;
+
 using Microsoft.EntityFrameworkCore;
 
 

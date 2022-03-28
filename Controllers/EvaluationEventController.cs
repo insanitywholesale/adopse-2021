@@ -3,39 +3,35 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using adopse_2021.Models;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using adopse_2021.Models;
 
-namespace adopse_2021.Controllers
-{
+namespace adopse_2021.Controllers {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class EvaluationEventController : ControllerBase
-	{
+	public class EvaluationEventController : ControllerBase {
 		private readonly EvaluationContext _context;
 
-		public EvaluationEventController(EvaluationContext context)
-		{
+		public EvaluationEventController(EvaluationContext context) {
 			_context = context;
 		}
 
 		// GET: api/EvaluationEvent
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<EvaluationEvent>>> GetEvaluationEvents()
-		{
+		public async Task<ActionResult<IEnumerable<EvaluationEvent>>> GetEvaluationEvents() {
 			return await _context.EvaluationEvents.ToListAsync();
 		}
 
 		// GET: api/EvaluationEvent/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<EvaluationEvent>> GetEvaluationEvent(long id)
-		{
+		public async Task<ActionResult<EvaluationEvent>> GetEvaluationEvent(long id) {
 			var evaluationEvent = await _context.EvaluationEvents.FindAsync(id);
 
-			if (evaluationEvent == null)
-			{
+			if (evaluationEvent == null) {
 				return NotFound();
 			}
 
@@ -45,27 +41,19 @@ namespace adopse_2021.Controllers
 		// PUT: api/EvaluationEvent/5
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutEvaluationEvent(long id, EvaluationEvent evaluationEvent)
-		{
-			if (id != evaluationEvent.Id)
-			{
+		public async Task<IActionResult> PutEvaluationEvent(long id, EvaluationEvent evaluationEvent) {
+			if (id != evaluationEvent.Id) {
 				return BadRequest();
 			}
 
 			_context.Entry(evaluationEvent).State = EntityState.Modified;
 
-			try
-			{
+			try {
 				await _context.SaveChangesAsync();
-			}
-			catch (DbUpdateConcurrencyException)
-			{
-				if (!EvaluationEventExists(id))
-				{
+			} catch (DbUpdateConcurrencyException) {
+				if (!EvaluationEventExists(id)) {
 					return NotFound();
-				}
-				else
-				{
+				} else {
 					throw;
 				}
 			}
@@ -76,8 +64,7 @@ namespace adopse_2021.Controllers
 		// POST: api/EvaluationEvent
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPost]
-		public async Task<ActionResult<EvaluationEvent>> PostEvaluationEvent(EvaluationEvent evaluationEvent)
-		{
+		public async Task<ActionResult<EvaluationEvent>> PostEvaluationEvent(EvaluationEvent evaluationEvent) {
 			_context.EvaluationEvents.Add(evaluationEvent);
 			await _context.SaveChangesAsync();
 
@@ -86,11 +73,9 @@ namespace adopse_2021.Controllers
 
 		// DELETE: api/EvaluationEvent/5
 		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteEvaluationEvent(long id)
-		{
+		public async Task<IActionResult> DeleteEvaluationEvent(long id) {
 			var evaluationEvent = await _context.EvaluationEvents.FindAsync(id);
-			if (evaluationEvent == null)
-			{
+			if (evaluationEvent == null) {
 				return NotFound();
 			}
 
@@ -100,8 +85,7 @@ namespace adopse_2021.Controllers
 			return NoContent();
 		}
 
-		private bool EvaluationEventExists(long id)
-		{
+		private bool EvaluationEventExists(long id) {
 			return _context.EvaluationEvents.Any(e => e.Id == id);
 		}
 	}

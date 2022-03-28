@@ -3,39 +3,35 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using adopse_2021.Models;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using adopse_2021.Models;
 
-namespace adopse_2021.Controllers
-{
+namespace adopse_2021.Controllers {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class EvaluationController : ControllerBase
-	{
+	public class EvaluationController : ControllerBase {
 		private readonly EvaluationContext _context;
 
-		public EvaluationController(EvaluationContext context)
-		{
+		public EvaluationController(EvaluationContext context) {
 			_context = context;
 		}
 
 		// GET: api/Evaluation
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<Evaluation>>> GetEvaluations()
-		{
+		public async Task<ActionResult<IEnumerable<Evaluation>>> GetEvaluations() {
 			return await _context.Evaluations.ToListAsync();
 		}
 
 		// GET: api/Evaluation/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<Evaluation>> GetEvaluation(long id)
-		{
+		public async Task<ActionResult<Evaluation>> GetEvaluation(long id) {
 			var evaluation = await _context.Evaluations.FindAsync(id);
 
-			if (evaluation == null)
-			{
+			if (evaluation == null) {
 				return NotFound();
 			}
 
@@ -45,27 +41,19 @@ namespace adopse_2021.Controllers
 		// PUT: api/Evaluation/5
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutEvaluation(long id, Evaluation evaluation)
-		{
-			if (id != evaluation.Id)
-			{
+		public async Task<IActionResult> PutEvaluation(long id, Evaluation evaluation) {
+			if (id != evaluation.Id) {
 				return BadRequest();
 			}
 
 			_context.Entry(evaluation).State = EntityState.Modified;
 
-			try
-			{
+			try {
 				await _context.SaveChangesAsync();
-			}
-			catch (DbUpdateConcurrencyException)
-			{
-				if (!EvaluationExists(id))
-				{
+			} catch (DbUpdateConcurrencyException) {
+				if (!EvaluationExists(id)) {
 					return NotFound();
-				}
-				else
-				{
+				} else {
 					throw;
 				}
 			}
@@ -76,8 +64,7 @@ namespace adopse_2021.Controllers
 		// POST: api/Evaluation
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPost]
-		public async Task<ActionResult<Evaluation>> PostEvaluation(Evaluation evaluation)
-		{
+		public async Task<ActionResult<Evaluation>> PostEvaluation(Evaluation evaluation) {
 			_context.Evaluations.Add(evaluation);
 			await _context.SaveChangesAsync();
 
@@ -86,11 +73,9 @@ namespace adopse_2021.Controllers
 
 		// DELETE: api/Evaluation/5
 		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteEvaluation(long id)
-		{
+		public async Task<IActionResult> DeleteEvaluation(long id) {
 			var evaluation = await _context.Evaluations.FindAsync(id);
-			if (evaluation == null)
-			{
+			if (evaluation == null) {
 				return NotFound();
 			}
 
@@ -100,8 +85,7 @@ namespace adopse_2021.Controllers
 			return NoContent();
 		}
 
-		private bool EvaluationExists(long id)
-		{
+		private bool EvaluationExists(long id) {
 			return _context.Evaluations.Any(e => e.Id == id);
 		}
 	}

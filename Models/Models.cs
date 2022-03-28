@@ -1,35 +1,29 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace adopse_2021.Models
-{
-	public class Person
-	{
+namespace adopse_2021.Models {
+	public class Person {
 		public long Id { get; set; }
 		public string? Name { get; set; }
 		public string? Email { get; set; }
 		public string? Phone { get; set; }
 	}
 
-	public class Evaluee : Person
-	{
+	public class Evaluee : Person {
 		public string? Notes { get; set; }
 	}
 
-	public class Evaluator : Person
-	{
+	public class Evaluator : Person {
 		public Organization? Organization { get; set; }
 	}
 
-	public class Evaluation
-	{
+	public class Evaluation {
 		public long Id { get; set; }
 		public string? Title { get; set; }
 
 		public virtual ICollection<EvaluationQuestion>? Questions { get; set; }
 	}
 
-	public class EvaluationEvent
-	{
+	public class EvaluationEvent {
 		public long Id { get; set; }
 
 		[DataType(DataType.Date)]
@@ -48,42 +42,35 @@ namespace adopse_2021.Models
 
 	// For the inheritance stuff below I got help from here:
 	// https://stackoverflow.com/questions/66772647/how-to-deserialize-a-json-array-containing-objects-having-different-shape-in-c
-	public class EvaluationQuestion
-	{
+	public class EvaluationQuestion {
 		public long Id { get; set; }
 		public string? Heading { get; set; }
 	}
 
-	public class EvaluationAnswer
-	{
+	public class EvaluationAnswer {
 		public long Id { get; set; }
 		public bool IsCorrectAnswer { get; set; }
 	}
 
-	public class OpenQuestion : EvaluationQuestion
-	{
+	public class OpenQuestion : EvaluationQuestion {
 		public OpenAnswer? Answer { get; set; }
 	}
 
-	public class OpenAnswer : EvaluationAnswer
-	{
+	public class OpenAnswer : EvaluationAnswer {
 		public string? ContentFromEvaluee { get; set; }
 	}
 
-	public class MultipleChoiceQuestion : EvaluationQuestion
-	{
+	public class MultipleChoiceQuestion : EvaluationQuestion {
 		public bool HasCorrectAnswer { get; set; }
 		public ICollection<MultipleChoiceAnswer>? Answers { get; set; }
 	}
 
-	public class MultipleChoiceAnswer : EvaluationAnswer
-	{
+	public class MultipleChoiceAnswer : EvaluationAnswer {
 		public string? Content { get; set; }
 		public bool SelectedByEvaluee { get; set; }
 	}
 
-	public class Q
-	{
+	public class Q {
 		public long Id { get; set; }
 
 		public ICollection<OpenQuestion>? OpenQuestions { get; set; }
@@ -114,8 +101,7 @@ namespace adopse_2021.Models
 	//    public string Type => "CorrectAnswer";
 	//}
 
-	public class Organization
-	{
+	public class Organization {
 		public long Id { get; set; }
 		public string? Name { get; set; }
 	}

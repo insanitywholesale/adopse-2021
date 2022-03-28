@@ -3,39 +3,35 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using adopse_2021.Models;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using adopse_2021.Models;
 
-namespace adopse_2021.Controllers
-{
+namespace adopse_2021.Controllers {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class MultipleChoiceAnswerController : ControllerBase
-	{
+	public class MultipleChoiceAnswerController : ControllerBase {
 		private readonly EvaluationContext _context;
 
-		public MultipleChoiceAnswerController(EvaluationContext context)
-		{
+		public MultipleChoiceAnswerController(EvaluationContext context) {
 			_context = context;
 		}
 
 		// GET: api/MultipleChoiceAnswer
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<MultipleChoiceAnswer>>> GetMultipleChoiceAnswers()
-		{
+		public async Task<ActionResult<IEnumerable<MultipleChoiceAnswer>>> GetMultipleChoiceAnswers() {
 			return await _context.MultipleChoiceAnswers.ToListAsync();
 		}
 
 		// GET: api/MultipleChoiceAnswer/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<MultipleChoiceAnswer>> GetMultipleChoiceAnswer(long id)
-		{
+		public async Task<ActionResult<MultipleChoiceAnswer>> GetMultipleChoiceAnswer(long id) {
 			var multipleChoiceAnswer = await _context.MultipleChoiceAnswers.FindAsync(id);
 
-			if (multipleChoiceAnswer == null)
-			{
+			if (multipleChoiceAnswer == null) {
 				return NotFound();
 			}
 
@@ -45,27 +41,19 @@ namespace adopse_2021.Controllers
 		// PUT: api/MultipleChoiceAnswer/5
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutMultipleChoiceAnswer(long id, MultipleChoiceAnswer multipleChoiceAnswer)
-		{
-			if (id != multipleChoiceAnswer.Id)
-			{
+		public async Task<IActionResult> PutMultipleChoiceAnswer(long id, MultipleChoiceAnswer multipleChoiceAnswer) {
+			if (id != multipleChoiceAnswer.Id) {
 				return BadRequest();
 			}
 
 			_context.Entry(multipleChoiceAnswer).State = EntityState.Modified;
 
-			try
-			{
+			try {
 				await _context.SaveChangesAsync();
-			}
-			catch (DbUpdateConcurrencyException)
-			{
-				if (!MultipleChoiceAnswerExists(id))
-				{
+			} catch (DbUpdateConcurrencyException) {
+				if (!MultipleChoiceAnswerExists(id)) {
 					return NotFound();
-				}
-				else
-				{
+				} else {
 					throw;
 				}
 			}
@@ -76,8 +64,7 @@ namespace adopse_2021.Controllers
 		// POST: api/MultipleChoiceAnswer
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPost]
-		public async Task<ActionResult<MultipleChoiceAnswer>> PostMultipleChoiceAnswer(MultipleChoiceAnswer multipleChoiceAnswer)
-		{
+		public async Task<ActionResult<MultipleChoiceAnswer>> PostMultipleChoiceAnswer(MultipleChoiceAnswer multipleChoiceAnswer) {
 			_context.MultipleChoiceAnswers.Add(multipleChoiceAnswer);
 			await _context.SaveChangesAsync();
 
@@ -86,11 +73,9 @@ namespace adopse_2021.Controllers
 
 		// DELETE: api/MultipleChoiceAnswer/5
 		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteMultipleChoiceAnswer(long id)
-		{
+		public async Task<IActionResult> DeleteMultipleChoiceAnswer(long id) {
 			var multipleChoiceAnswer = await _context.MultipleChoiceAnswers.FindAsync(id);
-			if (multipleChoiceAnswer == null)
-			{
+			if (multipleChoiceAnswer == null) {
 				return NotFound();
 			}
 
@@ -100,8 +85,7 @@ namespace adopse_2021.Controllers
 			return NoContent();
 		}
 
-		private bool MultipleChoiceAnswerExists(long id)
-		{
+		private bool MultipleChoiceAnswerExists(long id) {
 			return _context.MultipleChoiceAnswers.Any(e => e.Id == id);
 		}
 	}

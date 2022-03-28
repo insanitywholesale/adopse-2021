@@ -1,11 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace adopse_2021.Models
-{
-	public class EvaluationContext : DbContext
-	{
-		public EvaluationContext(DbContextOptions<EvaluationContext> options) : base(options)
-		{
+namespace adopse_2021.Models {
+	public class EvaluationContext : DbContext {
+		public EvaluationContext(DbContextOptions<EvaluationContext> options) : base(options) {
 		}
 
 		public DbSet<Person> People { get; set; } = null!;

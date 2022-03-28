@@ -3,39 +3,35 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using adopse_2021.Models;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using adopse_2021.Models;
 
-namespace adopse_2021.Controllers
-{
+namespace adopse_2021.Controllers {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class OpenAnswerController : ControllerBase
-	{
+	public class OpenAnswerController : ControllerBase {
 		private readonly EvaluationContext _context;
 
-		public OpenAnswerController(EvaluationContext context)
-		{
+		public OpenAnswerController(EvaluationContext context) {
 			_context = context;
 		}
 
 		// GET: api/OpenAnswer
 		[HttpGet]
-		public async Task<ActionResult<IEnumerable<OpenAnswer>>> GetOpenAnswers()
-		{
+		public async Task<ActionResult<IEnumerable<OpenAnswer>>> GetOpenAnswers() {
 			return await _context.OpenAnswers.ToListAsync();
 		}
 
 		// GET: api/OpenAnswer/5
 		[HttpGet("{id}")]
-		public async Task<ActionResult<OpenAnswer>> GetOpenAnswer(long id)
-		{
+		public async Task<ActionResult<OpenAnswer>> GetOpenAnswer(long id) {
 			var openAnswer = await _context.OpenAnswers.FindAsync(id);
 
-			if (openAnswer == null)
-			{
+			if (openAnswer == null) {
 				return NotFound();
 			}
 
@@ -45,27 +41,19 @@ namespace adopse_2021.Controllers
 		// PUT: api/OpenAnswer/5
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPut("{id}")]
-		public async Task<IActionResult> PutOpenAnswer(long id, OpenAnswer openAnswer)
-		{
-			if (id != openAnswer.Id)
-			{
+		public async Task<IActionResult> PutOpenAnswer(long id, OpenAnswer openAnswer) {
+			if (id != openAnswer.Id) {
 				return BadRequest();
 			}
 
 			_context.Entry(openAnswer).State = EntityState.Modified;
 
-			try
-			{
+			try {
 				await _context.SaveChangesAsync();
-			}
-			catch (DbUpdateConcurrencyException)
-			{
-				if (!OpenAnswerExists(id))
-				{
+			} catch (DbUpdateConcurrencyException) {
+				if (!OpenAnswerExists(id)) {
 					return NotFound();
-				}
-				else
-				{
+				} else {
 					throw;
 				}
 			}
@@ -76,8 +64,7 @@ namespace adopse_2021.Controllers
 		// POST: api/OpenAnswer
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPost]
-		public async Task<ActionResult<OpenAnswer>> PostOpenAnswer(OpenAnswer openAnswer)
-		{
+		public async Task<ActionResult<OpenAnswer>> PostOpenAnswer(OpenAnswer openAnswer) {
 			_context.OpenAnswers.Add(openAnswer);
 			await _context.SaveChangesAsync();
 
@@ -86,11 +73,9 @@ namespace adopse_2021.Controllers
 
 		// DELETE: api/OpenAnswer/5
 		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteOpenAnswer(long id)
-		{
+		public async Task<IActionResult> DeleteOpenAnswer(long id) {
 			var openAnswer = await _context.OpenAnswers.FindAsync(id);
-			if (openAnswer == null)
-			{
+			if (openAnswer == null) {
 				return NotFound();
 			}
 
@@ -100,8 +85,7 @@ namespace adopse_2021.Controllers
 			return NoContent();
 		}
 
-		private bool OpenAnswerExists(long id)
-		{
+		private bool OpenAnswerExists(long id) {
 			return _context.OpenAnswers.Any(e => e.Id == id);
 		}
 	}
