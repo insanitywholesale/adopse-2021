@@ -1,8 +1,8 @@
-using System.Environment;
-
 using adopse_2021.Models;
 
 using Microsoft.EntityFrameworkCore;
+
+using static System.Environment;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,12 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Choose between PostgreSQL and In-
-var usePostgres = System.Environment.GetEnvironmentVariable("USE_POSTGRES")
+var usePostgres = System.Environment.GetEnvironmentVariable("USE_POSTGRES");
 
-if usePostgres != "" {
-	builder.Services.AddDbContext<EvaluationContext>(options =>
-	{
-options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection");
+if (usePostgres != "") {
+	builder.Services.AddDbContext<EvaluationContext>(options => {
+		options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 	});
 } else {
 	builder.Services.AddDbContext<EvaluationContext>(options => {
