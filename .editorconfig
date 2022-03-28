@@ -1,4 +1,24 @@
-# Don't use tabs for indentation.
+# Global settings
 [*]
 indent_style = tab
 trim_trailing_whitespace = true
+end_of_line = lf
+
+# C# and .NET settings
+[*.cs]
+insert_final_newline = true
+charset = utf-8
+
+csharp_new_line_before_catch = false
+csharp_new_line_before_else = false
+csharp_new_line_before_finally = false
+csharp_new_line_before_open_brace = none
+csharp_new_line_between_query_expression_clauses = false
+
+# Organize usings
+dotnet_separate_import_directive_groups = true
+dotnet_sort_system_directives_first = true
+
+# Use language keywords instead of framework type names for type references
+dotnet_style_predefined_type_for_locals_parameters_members = true : warning
+dotnet_style_predefined_type_for_member_access = true : warning
