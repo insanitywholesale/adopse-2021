@@ -11,10 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-// Choose between PostgreSQL and In-
+// Choose between PostgreSQL and In-Memory
 var usePostgres = System.Environment.GetEnvironmentVariable("USE_POSTGRES");
 
-if (usePostgres != "") {
+if (usePostgres == "true") {
 	builder.Services.AddDbContext<EvaluationContext>(options => {
 		options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 	});
