@@ -2,11 +2,18 @@
 
 echo "Controllers have already been generated, no need to run this"
 echo "If you know what you're doing, edit the script"
-exit 1
+#exit 1
 
 # delet dis
-#rm Controllers/*
+rm Controllers/*
 
+# evaluee answers
+dotnet aspnet-codegenerator controller -async -api -f \
+	--no-build \
+	-name EvalueeAnswersController \
+	-m EvalueeAnswers \
+	-dc EvaluationContext \
+	-outDir Controllers
 # evaluation event
 dotnet aspnet-codegenerator controller -async -api -f \
 	--no-build \
@@ -86,10 +93,11 @@ dotnet aspnet-codegenerator controller -async -api -f \
 	-m MultipleChoiceAnswer \
 	-dc EvaluationContext \
 	-outDir Controllers
-#TODO: maybe later
 dotnet aspnet-codegenerator controller -async -api -f \
 	--no-build \
 	-name AController \
 	-m A \
 	-dc EvaluationContext \
 	-outDir Controllers
+# needed cause otherwise there are a lot of whitespace changes
+dotnet format

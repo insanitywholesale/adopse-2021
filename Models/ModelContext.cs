@@ -1,3 +1,5 @@
+using adopse_2021.Models;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace adopse_2021.Models {
@@ -13,12 +15,17 @@ namespace adopse_2021.Models {
 
 		public DbSet<EvaluationEvent> EvaluationEvents { get; set; } = null!;
 
+		public DbSet<EvalueeAnswers>? EvalueeAnswerSets { get; set; } = null;
+
 		public DbSet<EvaluationQuestion> Questions { get; set; } = null!;
 		public DbSet<EvaluationAnswer> Answers { get; set; } = null!;
+
 		public DbSet<OpenQuestion> OpenQuestions { get; set; } = null!;
 		public DbSet<OpenAnswer> OpenAnswers { get; set; } = null!;
+
 		public DbSet<MultipleChoiceQuestion> MultipleChoiceQuestions { get; set; } = null!;
 		public DbSet<MultipleChoiceAnswer> MultipleChoiceAnswers { get; set; } = null!;
+
 		public DbSet<Q> Qs { get; set; } = null!;
 		public DbSet<A> As { get; set; } = null!;
 
