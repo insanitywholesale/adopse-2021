@@ -20,6 +20,7 @@ namespace adopse_2021.Models {
 		public DbSet<MultipleChoiceQuestion> MultipleChoiceQuestions { get; set; } = null!;
 		public DbSet<MultipleChoiceAnswer> MultipleChoiceAnswers { get; set; } = null!;
 		public DbSet<Q> Qs { get; set; } = null!;
+		public DbSet<A> As { get; set; } = null!;
 
 		public DbSet<Organization> Organization { get; set; } = null!;
 	}

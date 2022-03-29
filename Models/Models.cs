@@ -20,6 +20,7 @@ namespace adopse_2021.Models {
 		public long Id { get; set; }
 		public string? Title { get; set; }
 
+		//TODO: replace with Q
 		public virtual ICollection<EvaluationQuestion>? Questions { get; set; }
 	}
 
@@ -37,7 +38,17 @@ namespace adopse_2021.Models {
 
 		public Evaluator? Evaluator { get; set; }
 
-		public virtual ICollection<Evaluee>? Evaluees { get; set; }
+		public virtual ICollection<EvalueeAnswers>? EvalueeAnswerSets { get; set; }
+	}
+
+	public class EvalueeAnswers {
+		public long Id { get; set; }
+
+		public Evaluee? Evaluee { get; set; }
+		//TODO: replace with A
+		public virtual ICollection<EvaluationAnswer>? Answers { get; set; }
+
+		//something about event
 	}
 
 	// For the inheritance stuff below I got help from here:
@@ -75,6 +86,13 @@ namespace adopse_2021.Models {
 
 		public ICollection<OpenQuestion>? OpenQuestions { get; set; }
 		public ICollection<MultipleChoiceQuestion>? MultipleChoiceQuestions { get; set; }
+	}
+
+	public class A {
+		public long Id { get; set; }
+
+		public ICollection<OpenAnswer>? OpenAnswerss { get; set; }
+		public ICollection<MultipleChoiceAnswer>? MultipleChoiceAnswers { get; set; }
 	}
 
 	//TODO: add later

@@ -87,9 +87,9 @@ dotnet aspnet-codegenerator controller -async -api -f \
 	-dc EvaluationContext \
 	-outDir Controllers
 #TODO: maybe later
-#dotnet aspnet-codegenerator controller -async -api -f \
-#	--no-build \
-#	-name AController \
-#	-m A \
-#	-dc EvaluationContext \
-#	-outDir Controllers
+dotnet aspnet-codegenerator controller -async -api -f \
+	--no-build \
+	-name AController \
+	-m A \
+	-dc EvaluationContext \
+	-outDir Controllers
