@@ -23,7 +23,7 @@ namespace adopse_2021.Controllers {
 		// GET: api/Evaluation
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<Evaluation>>> GetEvaluations() {
-			return await _context.Evaluations.ToListAsync();
+			return await _context.Evaluations.Include(x => x.Questions).ToListAsync();
 		}
 
 		// GET: api/Evaluation/5
