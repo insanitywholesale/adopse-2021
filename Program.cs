@@ -4,8 +4,18 @@ using Microsoft.EntityFrameworkCore;
 
 using static System.Environment;
 
+var MyAllowSpecificOrigins = "_MyAllowAllPolicy";
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options => {
+	options.AddPolicy(name: MyAllowSpecificOrigins,
+		builder => { builder.WithOrigins("*").SetIsOriginAllowedToAllowWildcardSubdomains()
+		.AllowAnyOrigin()
+		.AllowAnyMethod()
+		.AllowAnyHeader();
+		});
+});
 
 // Add services to the container.
 
@@ -44,6 +54,8 @@ if (app.Environment.IsDevelopment()) {
 	// Moved here because we don't need HTTPS in development
 	app.UseHttpsRedirection();
 }
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
