@@ -1,6 +1,7 @@
 .PHONY: runpostgres
 
 clean:
+	dotnet clean
 	rm -rf obj/
 	rm -rf bin/
 
