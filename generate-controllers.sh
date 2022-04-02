@@ -7,7 +7,7 @@ exit
 # delet dis
 #rm Controllers/*
 
-# evaluee answers
+# evaluee participation
 dotnet aspnet-codegenerator controller -async -api \
 	-name EvalueeParticipationController \
 	-m EvalueeParticipation \
@@ -35,12 +35,6 @@ dotnet aspnet-codegenerator controller -async -api \
 dotnet aspnet-codegenerator controller -async -api \
 	-name EvaluatorController \
 	-m Evaluator \
-	-dc EvaluationContext \
-	-outDir Controllers
-# organization
-dotnet aspnet-codegenerator controller -async -api \
-	-name OrganizationController \
-	-m Organization \
 	-dc EvaluationContext \
 	-outDir Controllers
 # questions
