@@ -64,6 +64,32 @@ curl -s -X 'POST' \
   ]
 }' | jq
 
+curl -s -X 'POST' \
+  'http://localhost:5000/api/multiplechoicequestion' \
+  -H 'accept: text/plain' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "heading": "from the following select the one most resembling a whale",
+  "hasCorrectAnswer": true,
+  "answers": [
+    {
+      "isCorrectAnswer": false,
+      "content": "bat",
+      "selectedByEvaluee": false
+    },
+    {
+      "isCorrectAnswer": true,
+      "content": "dolphin",
+      "selectedByEvaluee": true
+    },
+    {
+      "isCorrectAnswer": false,
+      "content": "Narwhal",
+      "selectedByEvaluee": false
+    }
+  ]
+}' | jq
+
 curl -s -X 'GET' \
   'http://localhost:5000/api/multiplechoicequestion' \
   -H 'accept: text/plain' | jq
