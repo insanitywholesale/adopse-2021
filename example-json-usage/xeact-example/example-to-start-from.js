@@ -13,8 +13,8 @@ import { g, h, x } from "./xeact.js";
 	questions.append(...Object.entries(data).map(b => 
 		console.log(b[0]);
 		console.log(b[1]);
-		h("div", {className: "class-id", innerText: "yoink"}, b[1].map(item =>
-			h("p", {className: "class-id", innerText: "oomfie"})
+		h("div", {className: `something-${b[0]}`, innerText: "yoink"}, b[1].map(item =>
+			h("p", {className: `somethingelse-${item.id}`, innerText: "oomfie"})
 		))
 	);
 })();
