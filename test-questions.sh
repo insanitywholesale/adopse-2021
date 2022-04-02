@@ -12,6 +12,18 @@ curl -s -X 'POST' \
   }
 }' | jq
 
+curl -s -X 'POST' \
+  'http://localhost:5000/api/openquestion' \
+  -H 'accept: text/plain' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "heading": "say hello world without an exclamation point",
+  "answer": {
+    "isCorrectAnswer": false,
+    "contentFromEvaluee": "hello world!"
+  }
+}' | jq
+
 curl -s -X 'GET' \
   'http://localhost:5000/api/openquestion' \
   -H 'accept: text/plain' | jq
