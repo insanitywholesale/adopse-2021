@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS EvaluationEvent (
 	evaluation_event_completed BOOLEAN DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS EvalueeAnswer (
-	evaluee_answer_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY NOT NULL,
+CREATE TABLE IF NOT EXISTS EvalueeParticipation (
+	evaluee_participation_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY NOT NULL,
 	evaluation_event_id INTEGER REFERENCES EvaluationEvent(evaluation_event_id) NOT NULL,
 	evaluation_answer_id INTEGER REFERENCES EvaluationAnswer(evaluation_answer_id) NOT NULL,
 	evaluee_id INTEGER REFERENCES Evaluee(evaluee_id) NOT NULL
