@@ -45,33 +45,21 @@ dotnet aspnet-codegenerator controller -async -api \
 	-outDir Controllers
 # questions
 dotnet aspnet-codegenerator controller -async -api \
-	-name EvaluationQuestionController \
-	-m EvaluationQuestion \
-	-dc EvaluationContext \
-	-outDir Controllers
-dotnet aspnet-codegenerator controller -async -api \
 	-name OpenQuestionController \
 	-m OpenQuestion \
 	-dc EvaluationContext \
 	-outDir Controllers
-dotnet aspnet-codegenerator controller -async -api -f \
 dotnet aspnet-codegenerator controller -async -api \
 	-name MultipleChoiceQuestionController \
 	-m MultipleChoiceQuestion \
 	-dc EvaluationContext \
 	-outDir Controllers
-dotnet aspnet-codegenerator controller -async -api -f \
 dotnet aspnet-codegenerator controller -async -api \
 	-name QController \
 	-m Q \
 	-dc EvaluationContext \
 	-outDir Controllers
 # answers
-dotnet aspnet-codegenerator controller -async -api \
-	-name EvaluationAnswerController \
-	-m EvaluationAnswer \
-	-dc EvaluationContext \
-	-outDir Controllers
 dotnet aspnet-codegenerator controller -async -api \
 	-name OpenAnswerController \
 	-m OpenAnswer \
