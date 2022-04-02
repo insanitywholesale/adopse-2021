@@ -35,6 +35,8 @@ namespace adopse_2021.Controllers {
 				return NotFound();
 			}
 
+			// get the idea from here:
+			// https://stackoverflow.com/questions/7348663/c-sharp-entity-framework-how-can-i-combine-a-find-and-include-on-a-model-obje#7348694
 			_context.Entry(multipleChoiceQuestion).Reference(x => x.Answers).Load();
 
 			return multipleChoiceQuestion;
