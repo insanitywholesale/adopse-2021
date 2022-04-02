@@ -24,7 +24,301 @@ you can visit [http://localhost:5000/swagger/index.html](http://localhost:5000/s
 to interact with the API explorer.
 
 ## JSON structure
-<!--TODO: insert examples-->
+Order of methods follows the Swagger docs mentioned above for consistency
+
+### Open Questions
+Open questions CRUD
+
+#### Read All Open Questions
+method: `GET`
+endpoint: `/api/openquestion`
+
+receive:
+```json
+[
+  {
+    "answer": {
+      "contentFromEvaluee": "hello world",
+      "id": 1,
+      "isCorrectAnswer": true
+    },
+    "id": 1,
+    "heading": "say hello world"
+  },
+  {
+    "answer": {
+      "contentFromEvaluee": "hello world!",
+      "id": 2,
+      "isCorrectAnswer": false
+    },
+    "id": 2,
+    "heading": "say hello world without an exclamation point"
+  }
+]
+```
+
+#### Create Open Question
+method: `POST`
+endpoint: `/api/openquestion`
+
+send:
+```json
+{
+  "heading": "say hello world",
+  "answer": {
+    "isCorrectAnswer": true,
+    "contentFromEvaluee": "hello world"
+  }
+}
+```
+
+receive:
+```json
+{
+  "answer": {
+    "contentFromEvaluee": "hello world",
+    "id": 1,
+    "isCorrectAnswer": true
+  },
+  "id": 1,
+  "heading": "say hello world"
+}
+```
+
+#### Read One Open Question
+method: `GET`
+endpoint: `/api/openquestion/1`
+
+receive:
+```json
+{
+  "answer": {
+    "contentFromEvaluee": "hello world",
+    "id": 1,
+    "isCorrectAnswer": true
+  },
+  "id": 1,
+  "heading": "say hello world"
+}
+```
+
+#### Update Open Question
+
+#### Delete Open Question
+
+
+### Multiple-Choice Questions
+Multiple-choice questions CRUD
+
+#### Read All Multiple-Choice Questions
+method: `GET`
+endpoint: `/api/multiplechoicequestion`
+
+```json
+[
+  {
+    "hasCorrectAnswer": true,
+    "answers": [
+      {
+        "content": "never gonna let you down",
+        "selectedByEvaluee": false,
+        "id": 1,
+        "isCorrectAnswer": true
+      },
+      {
+        "content": "never run around and desert you",
+        "selectedByEvaluee": true,
+        "id": 2,
+        "isCorrectAnswer": false
+      },
+      {
+        "content": "never gonna make you cry",
+        "selectedByEvaluee": false,
+        "id": 3,
+        "isCorrectAnswer": false
+      },
+      {
+        "content": "never gonna say goodbye",
+        "selectedByEvaluee": false,
+        "id": 4,
+        "isCorrectAnswer": false
+      },
+      {
+        "content": "never gonna tell a lie and hurt you",
+        "selectedByEvaluee": false,
+        "id": 5,
+        "isCorrectAnswer": false
+      }
+    ],
+    "id": 1,
+    "heading": "never gonna give you up"
+  },
+  {
+    "hasCorrectAnswer": true,
+    "answers": [
+      {
+        "content": "bat",
+        "selectedByEvaluee": false,
+        "id": 6,
+        "isCorrectAnswer": false
+      },
+      {
+        "content": "dolphin",
+        "selectedByEvaluee": true,
+        "id": 7,
+        "isCorrectAnswer": true
+      },
+      {
+        "content": "Narwhal",
+        "selectedByEvaluee": false,
+        "id": 8,
+        "isCorrectAnswer": false
+      }
+    ],
+    "id": 2,
+    "heading": "from the following select the one most resembling a whale"
+  }
+]
+```
+
+#### Create Multiple-Choice Question
+
+send:
+```json
+{
+  "heading": "never gonna give you up",
+  "hasCorrectAnswer": true,
+  "answers": [
+    {
+      "isCorrectAnswer": true,
+      "content": "never gonna let you down",
+      "selectedByEvaluee": false
+    },
+    {
+      "isCorrectAnswer": false,
+      "content": "never run around and desert you",
+      "selectedByEvaluee": true
+    },
+    {
+      "isCorrectAnswer": false,
+      "content": "never gonna make you cry",
+      "selectedByEvaluee": false
+    },
+    {
+      "isCorrectAnswer": false,
+      "content": "never gonna say goodbye",
+      "selectedByEvaluee": false
+    },
+    {
+      "isCorrectAnswer": false,
+      "content": "never gonna tell a lie and hurt you",
+      "selectedByEvaluee": false
+    }
+  ]
+}
+```
+
+receive:
+```json
+{
+  "hasCorrectAnswer": true,
+  "answers": [
+    {
+      "content": "never gonna let you down",
+      "selectedByEvaluee": false,
+      "id": 1,
+      "isCorrectAnswer": true
+    },
+    {
+      "content": "never run around and desert you",
+      "selectedByEvaluee": true,
+      "id": 2,
+      "isCorrectAnswer": false
+    },
+    {
+      "content": "never gonna make you cry",
+      "selectedByEvaluee": false,
+      "id": 3,
+      "isCorrectAnswer": false
+    },
+    {
+      "content": "never gonna say goodbye",
+      "selectedByEvaluee": false,
+      "id": 4,
+      "isCorrectAnswer": false
+    },
+    {
+      "content": "never gonna tell a lie and hurt you",
+      "selectedByEvaluee": false,
+      "id": 5,
+      "isCorrectAnswer": false
+    }
+  ],
+  "id": 1,
+  "heading": "never gonna give you up"
+}
+```
+
+#### Read One Multiple-Choice Question
+
+#### Update Multiple-Choice Question
+
+#### Delete Multiple-Choice Question
+
+
+### Questions
+List of all questions
+
+#### Read All Questions
+
+
+### Answers
+List of all questions
+
+#### Read All Answers
+
+
+### Evaluations
+Evaluations CRUD
+
+#### Read All Evaluations
+
+#### Create Evaluation
+
+#### Read One Evaluation
+
+#### Update Evaluation
+
+#### Delete Evaluation
+
+
+### EvaluationEvents
+EvaluationEvents CRUD
+
+#### Read All EvaluationEvents
+
+#### Create EvaluationEvent
+
+#### Read One EvaluationEvent
+
+#### Update EvaluationEvent
+
+#### Delete EvaluationEvent
+
+
+### EvaluationParticipations
+EvaluationParticipations CRUD
+
+#### Read All EvaluationParticipations
+
+#### Create EvaluationParticipation
+
+#### Read One EvaluationParticipation
+
+#### Update EvaluationParticipation
+
+#### Delete EvaluationParticipation
+
 
 # PostgreSQL
 Instructions about working with postgres in the context of this application.
