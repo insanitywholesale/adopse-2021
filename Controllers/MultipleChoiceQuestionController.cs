@@ -35,6 +35,8 @@ namespace adopse_2021.Controllers {
 				return NotFound();
 			}
 
+			_context.Entry(multipleChoiceQuestion).Reference(x => x.Answer).Load();
+
 			return multipleChoiceQuestion;
 		}
 

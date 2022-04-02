@@ -35,6 +35,8 @@ namespace adopse_2021.Controllers {
 				return NotFound();
 			}
 
+			_context.Entry(openQuestion).Reference(x => x.Answer).Load();
+
 			return openQuestion;
 		}
 
