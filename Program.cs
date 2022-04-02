@@ -10,10 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options => {
 	options.AddPolicy(name: MyAllowSpecificOrigins,
-		builder => { builder.WithOrigins("*").SetIsOriginAllowedToAllowWildcardSubdomains()
-		.AllowAnyOrigin()
-		.AllowAnyMethod()
-		.AllowAnyHeader();
+		builder => {
+			builder.WithOrigins("*")
+				.SetIsOriginAllowedToAllowWildcardSubdomains()
+				.AllowAnyOrigin()
+				.AllowAnyMethod()
+				.AllowAnyHeader();
 		});
 });
 
