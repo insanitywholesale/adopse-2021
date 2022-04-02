@@ -17,9 +17,6 @@ namespace adopse_2021.Models {
 
 		public DbSet<EvalueeAnswers>? EvalueeAnswerSets { get; set; } = null;
 
-		public DbSet<EvaluationQuestion> Questions { get; set; } = null!;
-		public DbSet<EvaluationAnswer> Answers { get; set; } = null!;
-
 		public DbSet<OpenQuestion> OpenQuestions { get; set; } = null!;
 		public DbSet<OpenAnswer> OpenAnswers { get; set; } = null!;
 
