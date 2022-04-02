@@ -44,21 +44,23 @@ namespace adopse_2021.Models {
 	public class EvalueeParticipation {
 		public long Id { get; set; }
 
+		public float Grade { get; set; }
+
 		public Evaluee Evaluee { get; set; }
 
-		public virtual A Answers { get; set; }
+		public A Answers { get; set; }
 	}
 
-	// For the inheritance stuff below I got help from here:
-	// https://stackoverflow.com/questions/66772647/how-to-deserialize-a-json-array-containing-objects-having-different-shape-in-c
 	public class EvaluationQuestion {
 		public long Id { get; set; }
 		public string Heading { get; set; }
+		public float Grade { get; set; }
 	}
 
 	public class EvaluationAnswer {
 		public long Id { get; set; }
 		public bool IsCorrectAnswer { get; set; }
+		public float Grade { get; set; }
 	}
 
 	public class OpenQuestion : EvaluationQuestion {
