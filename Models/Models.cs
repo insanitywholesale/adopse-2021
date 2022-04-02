@@ -13,7 +13,7 @@ namespace adopse_2021.Models {
 	}
 
 	public class Evaluator : Person {
-		public Organization? Organization { get; set; }
+		public string? Organization { get; set; }
 	}
 
 	public class Evaluation {
@@ -21,7 +21,7 @@ namespace adopse_2021.Models {
 		public string? Title { get; set; }
 
 		//TODO: replace with Q
-		public virtual ICollection<EvaluationQuestion>? Questions { get; set; }
+		public virtual Q? Questions { get; set; }
 	}
 
 	public class EvaluationEvent {
@@ -38,17 +38,18 @@ namespace adopse_2021.Models {
 
 		public Evaluator? Evaluator { get; set; }
 
-		public virtual ICollection<EvalueeAnswers>? EvalueeAnswerSets { get; set; }
+		public virtual ICollection<EvalueeParticipation>? EvalueeParticipations { get; set; }
 	}
 
-	public class EvalueeAnswers {
+	public class EvalueeParticipation {
 		public long Id { get; set; }
 
 		public Evaluee? Evaluee { get; set; }
-		//TODO: replace with A
-		public virtual ICollection<EvaluationAnswer>? Answers { get; set; }
 
-		//something about event
+		public virtual A? Answers { get; set; }
+
+		public virtual long EvaluationEventId { get; set; }
+		public virtual EvaluationEvent? EvaluationEvent { get; set; }
 	}
 
 	// For the inheritance stuff below I got help from here:
@@ -91,7 +92,7 @@ namespace adopse_2021.Models {
 	public class A {
 		public long Id { get; set; }
 
-		public ICollection<OpenAnswer>? OpenAnswerss { get; set; }
+		public ICollection<OpenAnswer>? OpenAnswers { get; set; }
 		public ICollection<MultipleChoiceAnswer>? MultipleChoiceAnswers { get; set; }
 	}
 
@@ -118,9 +119,4 @@ namespace adopse_2021.Models {
 	//{
 	//    public string Type => "CorrectAnswer";
 	//}
-
-	public class Organization {
-		public long Id { get; set; }
-		public string? Name { get; set; }
-	}
 }

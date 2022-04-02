@@ -2,15 +2,15 @@
 
 echo "Controllers have already been generated, no need to run this"
 echo "If you know what you're doing, edit the script"
-exit 1
+#exit 1
 
 # delet dis
-#rm Controllers/*
+rm Controllers/*
 
 # evaluee answers
 dotnet aspnet-codegenerator controller -async -api \
-	-name EvalueeAnswersController \
-	-m EvalueeAnswers \
+	-name EvalueeParticipationController \
+	-m EvalueeParticipation \
 	-dc EvaluationContext \
 	-outDir Controllers
 # evaluation event
