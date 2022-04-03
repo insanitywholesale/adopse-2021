@@ -5,7 +5,11 @@ namespace adopse_2021.Models {
 	public class Person {
 		public long Id { get; set; }
 		public string Name { get; set; }
+
+		[DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
+
+		[DataType(DataType.PhoneNumber)]
 		public string Phone { get; set; }
 	}
 
@@ -20,6 +24,8 @@ namespace adopse_2021.Models {
 	public class Evaluation {
 		public long Id { get; set; }
 		public string Title { get; set; }
+		public float Grade { get; set; }
+		public bool IsGraded { get; set; }
 
 		public Q Questions { get; set; }
 	}
@@ -28,11 +34,10 @@ namespace adopse_2021.Models {
 		public long Id { get; set; }
 
 		[DataType(DataType.Date)]
-		public DateTime Date { get; set; }
+		public System.DateTime Date { get; set; }
 
-		public bool Active { get; set; }
-		public bool Passed { get; set; }
-		public bool Completed { get; set; }
+		public bool Active { get; set; } = false;
+		public bool Completed { get; set; } = false;
 
 		public Evaluation Evaluation { get; set; }
 
@@ -43,22 +48,24 @@ namespace adopse_2021.Models {
 
 	public class EvalueeParticipation {
 		public long Id { get; set; }
+		public float Grade { get; set; }
 
 		public Evaluee Evaluee { get; set; }
 
-		public virtual A Answers { get; set; }
+		public A Answers { get; set; }
 	}
 
-	// For the inheritance stuff below I got help from here:
-	// https://stackoverflow.com/questions/66772647/how-to-deserialize-a-json-array-containing-objects-having-different-shape-in-c
 	public class EvaluationQuestion {
 		public long Id { get; set; }
 		public string Heading { get; set; }
+		public float Grade { get; set; }
+		public bool IsGraded { get; set; }
 	}
 
 	public class EvaluationAnswer {
 		public long Id { get; set; }
 		public bool IsCorrectAnswer { get; set; }
+		public float Grade { get; set; }
 	}
 
 	public class OpenQuestion : EvaluationQuestion {
