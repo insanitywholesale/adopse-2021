@@ -7,8 +7,6 @@ namespace adopse_2021.Models {
 		public EvaluationContext(DbContextOptions<EvaluationContext> options) : base(options) { }
 
 		public DbSet<Person> People { get; set; } = null!;
-		public DbSet<Evaluee> Evaluees { get; set; } = null!;
-		public DbSet<Evaluator> Evaluators { get; set; } = null!;
 
 		public DbSet<Evaluation> Evaluations { get; set; } = null!;
 
