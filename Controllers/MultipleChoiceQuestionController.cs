@@ -72,21 +72,23 @@ namespace adopse_2021.Controllers {
 			_context.MultipleChoiceQuestions.Add(multipleChoiceQuestion);
 			await _context.SaveChangesAsync();
 
-			// Check that grade of question totals grade of correct answers is accurate
-			var gradeTotal = 0.0;
+			// If question is graded, check that grade of question totals grade of correct answers is accurate
+			if (multipleChoiceQuestion.IsGraded == true) {
+				var gradeTotal = 0.0;
 
-			foreach (MultipleChoiceAnswer mca in multipleChoiceQuestion.Answers) {
-				if (mca.IsCorrectAnswer == true) {
-					gradeTotal += mca.Grade;
+				foreach (MultipleChoiceAnswer mca in multipleChoiceQuestion.Answers) {
+					if (mca.IsCorrectAnswer == true) {
+						gradeTotal += mca.Grade;
+					}
+				}
+
+				// If the correct answer sum grade exceeds the question grade, return bad request
+				if (gradeTotal != multipleChoiceQuestion.Grade) {
+					return BadRequest();
 				}
 			}
 
-			// If the correct answer sum grade exceeds the question grade, return bad request
-			if (gradeTotal != multipleChoiceQuestion.Grade) {
-				return BadRequest();
-			} else {
-				return CreatedAtAction("GetMultipleChoiceQuestion", new { id = multipleChoiceQuestion.Id }, multipleChoiceQuestion);
-			}
+			return CreatedAtAction("GetMultipleChoiceQuestion", new { id = multipleChoiceQuestion.Id }, multipleChoiceQuestion);
 		}
 
 		// DELETE: api/MultipleChoiceQuestion/5
