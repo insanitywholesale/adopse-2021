@@ -13,14 +13,6 @@ namespace adopse_2021.Models {
 		public string Phone { get; set; }
 	}
 
-	public class Evaluee : Person {
-		public string Notes { get; set; }
-	}
-
-	public class Evaluator : Person {
-		public string Organization { get; set; }
-	}
-
 	public class Evaluation {
 		public long Id { get; set; }
 		public string Title { get; set; }
