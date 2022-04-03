@@ -41,7 +41,7 @@ namespace adopse_2021.Models {
 
 		public Evaluation Evaluation { get; set; }
 
-		public Evaluator Evaluator { get; set; }
+		public Person Evaluator { get; set; }
 
 		public ICollection<EvalueeParticipation> EvalueeParticipations { get; set; }
 	}
@@ -50,7 +50,7 @@ namespace adopse_2021.Models {
 		public long Id { get; set; }
 		public float Grade { get; set; }
 
-		public Evaluee Evaluee { get; set; }
+		public Person Evaluee { get; set; }
 
 		public A Answers { get; set; }
 	}
