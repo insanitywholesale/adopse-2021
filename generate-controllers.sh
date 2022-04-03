@@ -7,6 +7,12 @@ exit
 # delet dis
 #rm Controllers/*
 
+# person
+dotnet aspnet-codegenerator controller -async -api \
+	-name PersonController \
+	-m Person \
+	-dc EvaluationContext \
+	-outDir Controllers
 # evaluee participation
 dotnet aspnet-codegenerator controller -async -api \
 	-name EvalueeParticipationController \
@@ -23,18 +29,6 @@ dotnet aspnet-codegenerator controller -async -api \
 dotnet aspnet-codegenerator controller -async -api \
 	-name EvaluationController \
 	-m Evaluation \
-	-dc EvaluationContext \
-	-outDir Controllers
-# evaluee
-dotnet aspnet-codegenerator controller -async -api \
-	-name EvalueeController \
-	-m Evaluee \
-	-dc EvaluationContext \
-	-outDir Controllers
-# evaluator
-dotnet aspnet-codegenerator controller -async -api \
-	-name EvaluatorController \
-	-m Evaluator \
 	-dc EvaluationContext \
 	-outDir Controllers
 # questions
