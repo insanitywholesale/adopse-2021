@@ -366,6 +366,111 @@ endpoint: `/api/q`
 
 receive:
 ```json
+{
+  "id": 0,
+  "openQuestions": [
+    {
+      "answer": {
+        "contentFromEvaluee": "hello world",
+        "id": 1,
+        "isCorrectAnswer": true,
+        "grade": 0
+      },
+      "id": 1,
+      "heading": "say hello world",
+      "grade": 1,
+      "isGraded": true
+    },
+    {
+      "answer": {
+        "contentFromEvaluee": "hello world!",
+        "id": 2,
+        "isCorrectAnswer": false,
+        "grade": 0
+      },
+      "id": 2,
+      "heading": "say hello world without an exclamation point",
+      "grade": 1.5,
+      "isGraded": true
+    }
+  ],
+  "multipleChoiceQuestions": [
+    {
+      "hasCorrectAnswer": true,
+      "answers": [
+        {
+          "content": "never gonna let you down",
+          "selectedByEvaluee": false,
+          "id": 1,
+          "isCorrectAnswer": true,
+          "grade": 3
+        },
+        {
+          "content": "never run around and desert you",
+          "selectedByEvaluee": true,
+          "id": 2,
+          "isCorrectAnswer": false,
+          "grade": -0.5
+        },
+        {
+          "content": "never gonna make you cry",
+          "selectedByEvaluee": false,
+          "id": 3,
+          "isCorrectAnswer": false,
+          "grade": -1
+        },
+        {
+          "content": "never gonna say goodbye",
+          "selectedByEvaluee": false,
+          "id": 4,
+          "isCorrectAnswer": false,
+          "grade": -1.5
+        },
+        {
+          "content": "never gonna tell a lie and hurt you",
+          "selectedByEvaluee": false,
+          "id": 5,
+          "isCorrectAnswer": false,
+          "grade": -2
+        }
+      ],
+      "id": 1,
+      "heading": "never gonna give you up",
+      "grade": 3,
+      "isGraded": true
+    },
+    {
+      "hasCorrectAnswer": true,
+      "answers": [
+        {
+          "content": "bat",
+          "selectedByEvaluee": false,
+          "id": 6,
+          "isCorrectAnswer": false,
+          "grade": -0.5
+        },
+        {
+          "content": "dolphin",
+          "selectedByEvaluee": true,
+          "id": 7,
+          "isCorrectAnswer": true,
+          "grade": 1
+        },
+        {
+          "content": "Narwhal",
+          "selectedByEvaluee": false,
+          "id": 8,
+          "isCorrectAnswer": false,
+          "grade": -0.2
+        }
+      ],
+      "id": 2,
+      "heading": "from the following select the one most resembling a whale",
+      "grade": 1,
+      "isGraded": false
+    }
+  ]
+}
 ```
 
 ### Answers
@@ -373,11 +478,88 @@ List of all questions
 
 #### Read All Answers
 method: `GET`
-endpoint: `/api/q`
+endpoint: `/api/a`
 
 receive:
 ```json
+{
+  "id": 0,
+  "openAnswers": [
+    {
+      "contentFromEvaluee": "hello world",
+      "id": 1,
+      "isCorrectAnswer": true,
+      "grade": 0
+    },
+    {
+      "contentFromEvaluee": "hello world!",
+      "id": 2,
+      "isCorrectAnswer": false,
+      "grade": 0
+    }
+  ],
+  "multipleChoiceAnswers": [
+    {
+      "content": "never gonna let you down",
+      "selectedByEvaluee": false,
+      "id": 1,
+      "isCorrectAnswer": true,
+      "grade": 3
+    },
+    {
+      "content": "never run around and desert you",
+      "selectedByEvaluee": true,
+      "id": 2,
+      "isCorrectAnswer": false,
+      "grade": -0.5
+    },
+    {
+      "content": "never gonna make you cry",
+      "selectedByEvaluee": false,
+      "id": 3,
+      "isCorrectAnswer": false,
+      "grade": -1
+    },
+    {
+      "content": "never gonna say goodbye",
+      "selectedByEvaluee": false,
+      "id": 4,
+      "isCorrectAnswer": false,
+      "grade": -1.5
+    },
+    {
+      "content": "never gonna tell a lie and hurt you",
+      "selectedByEvaluee": false,
+      "id": 5,
+      "isCorrectAnswer": false,
+      "grade": -2
+    },
+    {
+      "content": "bat",
+      "selectedByEvaluee": false,
+      "id": 6,
+      "isCorrectAnswer": false,
+      "grade": -0.5
+    },
+    {
+      "content": "dolphin",
+      "selectedByEvaluee": true,
+      "id": 7,
+      "isCorrectAnswer": true,
+      "grade": 1
+    },
+    {
+      "content": "Narwhal",
+      "selectedByEvaluee": false,
+      "id": 8,
+      "isCorrectAnswer": false,
+      "grade": -0.2
+    }
+  ]
+}
+
 ```
+
 
 ### Evaluations
 Evaluations CRUD
