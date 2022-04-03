@@ -40,19 +40,25 @@ receive:
     "answer": {
       "contentFromEvaluee": "hello world",
       "id": 1,
-      "isCorrectAnswer": true
+      "isCorrectAnswer": true,
+      "grade": 0
     },
     "id": 1,
-    "heading": "say hello world"
+    "heading": "say hello world",
+    "grade": 1,
+    "isGraded": true
   },
   {
     "answer": {
       "contentFromEvaluee": "hello world!",
       "id": 2,
-      "isCorrectAnswer": false
+      "isCorrectAnswer": false,
+      "grade": 0
     },
     "id": 2,
-    "heading": "say hello world without an exclamation point"
+    "heading": "say hello world without an exclamation point",
+    "grade": 1.5,
+    "isGraded": true
   }
 ]
 ```
@@ -65,6 +71,8 @@ send:
 ```json
 {
   "heading": "say hello world",
+  "grade": 1,
+  "isGraded": true,
   "answer": {
     "isCorrectAnswer": true,
     "contentFromEvaluee": "hello world"
@@ -78,10 +86,13 @@ receive:
   "answer": {
     "contentFromEvaluee": "hello world",
     "id": 1,
-    "isCorrectAnswer": true
+    "isCorrectAnswer": true,
+    "grade": 0
   },
   "id": 1,
-  "heading": "say hello world"
+  "heading": "say hello world",
+  "grade": 1,
+  "isGraded": true
 }
 ```
 
@@ -95,10 +106,13 @@ receive:
   "answer": {
     "contentFromEvaluee": "hello world",
     "id": 1,
-    "isCorrectAnswer": true
+    "isCorrectAnswer": true,
+    "grade": 0
   },
   "id": 1,
-  "heading": "say hello world"
+  "heading": "say hello world",
+  "grade": 1,
+  "isGraded": true
 }
 ```
 
@@ -123,35 +137,42 @@ endpoint: `/api/multiplechoicequestion`
         "content": "never gonna let you down",
         "selectedByEvaluee": false,
         "id": 1,
-        "isCorrectAnswer": true
+        "isCorrectAnswer": true,
+        "grade": 3
       },
       {
         "content": "never run around and desert you",
         "selectedByEvaluee": true,
         "id": 2,
-        "isCorrectAnswer": false
+        "isCorrectAnswer": false,
+        "grade": -0.5
       },
       {
         "content": "never gonna make you cry",
         "selectedByEvaluee": false,
         "id": 3,
-        "isCorrectAnswer": false
+        "isCorrectAnswer": false,
+        "grade": -1
       },
       {
         "content": "never gonna say goodbye",
         "selectedByEvaluee": false,
         "id": 4,
-        "isCorrectAnswer": false
+        "isCorrectAnswer": false,
+        "grade": -1.5
       },
       {
         "content": "never gonna tell a lie and hurt you",
         "selectedByEvaluee": false,
         "id": 5,
-        "isCorrectAnswer": false
+        "isCorrectAnswer": false,
+        "grade": -2
       }
     ],
     "id": 1,
-    "heading": "never gonna give you up"
+    "heading": "never gonna give you up",
+    "grade": 3,
+    "isGraded": true
   },
   {
     "hasCorrectAnswer": true,
@@ -160,57 +181,71 @@ endpoint: `/api/multiplechoicequestion`
         "content": "bat",
         "selectedByEvaluee": false,
         "id": 6,
-        "isCorrectAnswer": false
+        "isCorrectAnswer": false,
+        "grade": -0.5
       },
       {
         "content": "dolphin",
         "selectedByEvaluee": true,
         "id": 7,
-        "isCorrectAnswer": true
+        "isCorrectAnswer": true,
+        "grade": 1
       },
       {
         "content": "Narwhal",
         "selectedByEvaluee": false,
         "id": 8,
-        "isCorrectAnswer": false
+        "isCorrectAnswer": false,
+        "grade": -0.2
       }
     ],
     "id": 2,
-    "heading": "from the following select the one most resembling a whale"
+    "heading": "from the following select the one most resembling a whale",
+    "grade": 1,
+    "isGraded": false
   }
 ]
 ```
 
 #### Create Multiple-Choice Question
+method: `POST`
+endpoint: `/api/multiplechoicequestion`
 
 send:
 ```json
 {
   "heading": "never gonna give you up",
+  "grade": 3,
+  "isGraded": true,
   "hasCorrectAnswer": true,
   "answers": [
     {
       "isCorrectAnswer": true,
+      "grade": 3,
       "content": "never gonna let you down",
       "selectedByEvaluee": false
     },
     {
       "isCorrectAnswer": false,
+      "grade": -0.5,
       "content": "never run around and desert you",
       "selectedByEvaluee": true
     },
     {
       "isCorrectAnswer": false,
+      "grade": -1,
       "content": "never gonna make you cry",
       "selectedByEvaluee": false
     },
     {
       "isCorrectAnswer": false,
+      "grade": -1.5,
       "content": "never gonna say goodbye",
       "selectedByEvaluee": false
     },
     {
       "isCorrectAnswer": false,
+      "grade": -2,
       "content": "never gonna tell a lie and hurt you",
       "selectedByEvaluee": false
     }
@@ -227,39 +262,95 @@ receive:
       "content": "never gonna let you down",
       "selectedByEvaluee": false,
       "id": 1,
-      "isCorrectAnswer": true
+      "isCorrectAnswer": true,
+      "grade": 3
     },
     {
       "content": "never run around and desert you",
       "selectedByEvaluee": true,
       "id": 2,
-      "isCorrectAnswer": false
+      "isCorrectAnswer": false,
+      "grade": -0.5
     },
     {
       "content": "never gonna make you cry",
       "selectedByEvaluee": false,
       "id": 3,
-      "isCorrectAnswer": false
+      "isCorrectAnswer": false,
+      "grade": -1
     },
     {
       "content": "never gonna say goodbye",
       "selectedByEvaluee": false,
       "id": 4,
-      "isCorrectAnswer": false
+      "isCorrectAnswer": false,
+      "grade": -1.5
     },
     {
       "content": "never gonna tell a lie and hurt you",
       "selectedByEvaluee": false,
       "id": 5,
-      "isCorrectAnswer": false
+      "isCorrectAnswer": false,
+      "grade": -2
     }
   ],
   "id": 1,
-  "heading": "never gonna give you up"
+  "heading": "never gonna give you up",
+  "grade": 3,
+  "isGraded": true
 }
 ```
 
 #### Read One Multiple-Choice Question
+method: `GET`
+endpoint: `/api/multiplechoicequestion/1`
+
+```json
+{
+  "hasCorrectAnswer": true,
+  "answers": [
+    {
+      "content": "never gonna let you down",
+      "selectedByEvaluee": false,
+      "id": 1,
+      "isCorrectAnswer": true,
+      "grade": 3
+    },
+    {
+      "content": "never run around and desert you",
+      "selectedByEvaluee": true,
+      "id": 2,
+      "isCorrectAnswer": false,
+      "grade": -0.5
+    },
+    {
+      "content": "never gonna make you cry",
+      "selectedByEvaluee": false,
+      "id": 3,
+      "isCorrectAnswer": false,
+      "grade": -1
+    },
+    {
+      "content": "never gonna say goodbye",
+      "selectedByEvaluee": false,
+      "id": 4,
+      "isCorrectAnswer": false,
+      "grade": -1.5
+    },
+    {
+      "content": "never gonna tell a lie and hurt you",
+      "selectedByEvaluee": false,
+      "id": 5,
+      "isCorrectAnswer": false,
+      "grade": -2
+    }
+  ],
+  "id": 1,
+  "heading": "never gonna give you up",
+  "grade": 3,
+  "isGraded": true
+}
+```
 
 #### Update Multiple-Choice Question
 
@@ -270,13 +361,23 @@ receive:
 List of all questions
 
 #### Read All Questions
+method: `GET`
+endpoint: `/api/q`
 
+receive:
+```json
+```
 
 ### Answers
 List of all questions
 
 #### Read All Answers
+method: `GET`
+endpoint: `/api/q`
 
+receive:
+```json
+```
 
 ### Evaluations
 Evaluations CRUD
