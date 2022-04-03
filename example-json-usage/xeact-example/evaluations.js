@@ -26,6 +26,6 @@ import { g, h, x } from "./xeact.js";
 				)),
 				h("br", {}),
 			]),
-		])
+		]),
 	))
 })();
