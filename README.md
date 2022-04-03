@@ -119,6 +119,8 @@ receive:
 #### Update Open Question
 
 #### Delete Open Question
+method: `DELETE`
+endpoint: `/api/openquestion/1`
 
 
 ### Multiple-Choice Questions
@@ -355,6 +357,8 @@ endpoint: `/api/multiplechoicequestion/1`
 #### Update Multiple-Choice Question
 
 #### Delete Multiple-Choice Question
+method: `DELETE`
+endpoint: `/api/multiplechoicequestion/1`
 
 
 ### Questions
@@ -557,7 +561,6 @@ receive:
     }
   ]
 }
-
 ```
 
 
