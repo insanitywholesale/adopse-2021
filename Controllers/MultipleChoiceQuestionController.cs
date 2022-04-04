@@ -8,6 +8,7 @@ using adopse_2021.Models;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 
 namespace adopse_2021.Controllers {
@@ -84,6 +85,18 @@ namespace adopse_2021.Controllers {
 
 				// If the correct answer sum grade exceeds the question grade, return bad request
 				if (gradeTotal != multipleChoiceQuestion.Grade) {
+					// Fancy error message
+					//return Problem(
+					//	statusCode: 400,
+					//	title: "The question is graded but the sum total grade of the correct answers exceeds the grade of the question"
+					//);
+
+					// Using ModelState
+					//var modelState = new ModelStateDictionary();
+					//modelState.AddModelError("Grade", "Grade bad.");
+					//return BadRequest(modelState);
+
+					// Default
 					return BadRequest();
 				}
 			}
