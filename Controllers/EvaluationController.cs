@@ -55,22 +55,21 @@ namespace adopse_2021.Controllers {
 		}
 
 		//TODO: figure out question IDs
-		//// GET: api/Evaluation/5/question/5
-		//[HttpGet("{id}/question")]
-		//public async Task<ActionResult<Q>> GetEvaluationQuestions(long id) {
-		//	var evaluation = await _context.Evaluations.FindAsync(id);
+		// GET: api/Evaluation/5/question/5
+		[HttpGet("{id}/question/{qid}")]
+		public async Task<ActionResult<Q>> GetEvaluationQuestion(long id, long qid) {
+			var evaluation = await _context.Evaluations.FindAsync(id);
 
-		//	if (evaluation == null) {
-		//		return NotFound();
-		//	}
+			if (evaluation == null) {
+				return NotFound();
+			}
 
+			if (evaluation.Questions == null) {
+				return NotFound();
+			}
 
-		//	if (evaluation.Questions == null) {
-		//		return NotFound();
-		//	}
-
-		//	return evaluation.Questions;
-		//}
+			return evaluation.Questions;
+		}
 
 		// PUT: api/Evaluation/5
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
