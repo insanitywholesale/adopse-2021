@@ -87,6 +87,24 @@ namespace adopse_2021.Controllers {
 			return CreatedAtAction("GetEvaluation", new { id = evaluation.Id }, evaluation);
 		}
 
+		// POST: api/Evaluation/5/multiplechoicequestion
+		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+		[HttpPost("{id}/multiplechoicequestion")]
+		public async Task<ActionResult<Evaluation>> AddMultipleChoiceQuestionToEvaluation(/*TODO*/) {
+			//TODO: figure out adding questions to Evaluation
+			//if question has ID, add it to evaluation
+			//if questions doesn't have ID, create it and then add it to evaluation
+		}
+
+		// POST: api/Evaluation/5/openquestion
+		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+		[HttpPost("{id}/openquestion")]
+		public async Task<ActionResult<Evaluation>> AddOpenQuestionToEvaluation(/*TODO*/) {
+			//TODO: figure out adding questions to Evaluation
+			//if question has ID, add it to evaluation
+			//if questions doesn't have ID, create it and then add it to evaluation
+		}
+
 		// DELETE: api/Evaluation/5
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteEvaluation(long id) {
