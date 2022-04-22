@@ -39,7 +39,7 @@ namespace adopse_2021.Controllers {
 		}
 
 		// GET: api/Evaluation/5/question
-		[HttpGet("{id}/question")]
+		[HttpGet("{id}/questions")]
 		public async Task<ActionResult<Q>> GetEvaluationQuestions(long id) {
 			var evaluation = await _context.Evaluations.FindAsync(id);
 
@@ -81,29 +81,30 @@ namespace adopse_2021.Controllers {
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPost]
 		public async Task<ActionResult<Evaluation>> PostEvaluation(Evaluation evaluation) {
+			//TODO: calculate grade from questions if grade is not supplied
 			_context.Evaluations.Add(evaluation);
 			await _context.SaveChangesAsync();
 
 			return CreatedAtAction(nameof(GetEvaluation), new { id = evaluation.Id }, evaluation);
 		}
 
-		// POST: api/Evaluation/5/multiplechoicequestion
-		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-		[HttpPost("{id}/multiplechoicequestion")]
-		public async Task<ActionResult<Evaluation>> AddMultipleChoiceQuestionToEvaluation(/*TODO*/) {
-			//TODO: figure out adding questions to Evaluation
-			//if question has ID, add it to evaluation
-			//if questions doesn't have ID, create it and then add it to evaluation
-		}
-
-		// POST: api/Evaluation/5/openquestion
-		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-		[HttpPost("{id}/openquestion")]
-		public async Task<ActionResult<Evaluation>> AddOpenQuestionToEvaluation(/*TODO*/) {
-			//TODO: figure out adding questions to Evaluation
-			//if question has ID, add it to evaluation
-			//if questions doesn't have ID, create it and then add it to evaluation
-		}
+//	// POST: api/Evaluation/5/multiplechoicequestion
+//	// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+//	[HttpPost("{id}/multiplechoicequestion")]
+//	public async Task<ActionResult<Evaluation>> AddMultipleChoiceQuestionToEvaluation(/*TODO*/) {
+//		//TODO: figure out adding questions to Evaluation
+//		//if question has ID, add it to evaluation
+//		//if questions doesn't have ID, create it and then add it to evaluation
+//	}
+//
+//	// POST: api/Evaluation/5/openquestion
+//	// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+//	[HttpPost("{id}/openquestion")]
+//	public async Task<ActionResult<Evaluation>> AddOpenQuestionToEvaluation(/*TODO*/) {
+//		//TODO: figure out adding questions to Evaluation
+//		//if question has ID, add it to evaluation
+//		//if questions doesn't have ID, create it and then add it to evaluation
+//	}
 
 		// DELETE: api/Evaluation/5
 		[HttpDelete("{id}")]
