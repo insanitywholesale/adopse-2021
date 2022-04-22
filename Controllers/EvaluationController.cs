@@ -84,7 +84,7 @@ namespace adopse_2021.Controllers {
 			_context.Evaluations.Add(evaluation);
 			await _context.SaveChangesAsync();
 
-			return CreatedAtAction("GetEvaluation", new { id = evaluation.Id }, evaluation);
+			return CreatedAtAction(nameof(GetEvaluation), new { id = evaluation.Id }, evaluation);
 		}
 
 		// POST: api/Evaluation/5/multiplechoicequestion

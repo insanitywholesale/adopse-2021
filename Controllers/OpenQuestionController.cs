@@ -72,7 +72,7 @@ namespace adopse_2021.Controllers {
 			_context.OpenQuestions.Add(openQuestion);
 			await _context.SaveChangesAsync();
 
-			return CreatedAtAction("GetOpenQuestion", new { id = openQuestion.Id }, openQuestion);
+			return CreatedAtAction(nameof(GetOpenQuestion), new { id = openQuestion.Id }, openQuestion);
 		}
 
 		// DELETE: api/OpenQuestion/5

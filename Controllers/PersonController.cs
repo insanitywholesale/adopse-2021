@@ -68,7 +68,7 @@ namespace adopse_2021.Controllers {
 			_context.People.Add(person);
 			await _context.SaveChangesAsync();
 
-			return CreatedAtAction("GetPerson", new { id = person.Id }, person);
+			return CreatedAtAction(nameof(GetPerson), new { id = person.Id }, person);
 		}
 
 		// DELETE: api/Person/5
