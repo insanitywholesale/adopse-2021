@@ -23,7 +23,7 @@ namespace adopse_2021.Controllers {
 		// GET: api/Evaluation
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<Evaluation>>> GetEvaluations() {
-			return await _context.Evaluations.Include(x => x.Questions).ToListAsync();
+			return await _context.Evaluations.Include(x => x.Questions.OpenQuestions).ThenInclude(x => x.Answer).Include(x => x.Questions.MultipleChoiceQuestions).ThenInclude(x => x.Answers).ToListAsync();
 		}
 
 		// GET: api/Evaluation/5
@@ -88,23 +88,36 @@ namespace adopse_2021.Controllers {
 			return CreatedAtAction(nameof(GetEvaluation), new { id = evaluation.Id }, evaluation);
 		}
 
-//	// POST: api/Evaluation/5/multiplechoicequestion
-//	// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-//	[HttpPost("{id}/multiplechoicequestion")]
-//	public async Task<ActionResult<Evaluation>> AddMultipleChoiceQuestionToEvaluation(/*TODO*/) {
-//		//TODO: figure out adding questions to Evaluation
-//		//if question has ID, add it to evaluation
-//		//if questions doesn't have ID, create it and then add it to evaluation
-//	}
-//
-//	// POST: api/Evaluation/5/openquestion
-//	// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-//	[HttpPost("{id}/openquestion")]
-//	public async Task<ActionResult<Evaluation>> AddOpenQuestionToEvaluation(/*TODO*/) {
-//		//TODO: figure out adding questions to Evaluation
-//		//if question has ID, add it to evaluation
-//		//if questions doesn't have ID, create it and then add it to evaluation
-//	}
+		// POST: api/Evaluation/5/multiplechoicequestion
+		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+		[HttpPost("{id}/multiplechoicequestion")]
+		public async Task<ActionResult<MultipleChoiceQuestion>> AddMultipleChoiceQuestionToEvaluation(long id, MultipleChoiceQuestion mcq) {
+			//TODO: check grades
+			if (mcq.Id < 1) {
+				//TODO: see if answers are saved
+				_context.MultipleChoiceQuestions.Add(mcq);
+				await _context.SaveChangesAsync();
+			} else {
+				mcq = await _context.MultipleChoiceQuestions.FindAsync(mcq.Id);
+				_context.Entry(mcq).Reference(x => x.Answers).Load();
+
+			}
+			var e = await _context.Evaluations.FindAsync(id);
+			_context.Entry(e).Reference(x => x.Questions).Load();
+			e.Questions.MultipleChoiceQuestions.Add(mcq);
+			return mcq;
+		}
+
+		/*
+		// POST: api/Evaluation/5/openquestion
+		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+		[HttpPost("{id}/openquestion")]
+		public async Task<ActionResult<Evaluation>> AddOpenQuestionToEvaluation(OpenQuestion oq) {
+			//TODO: figure out adding questions to Evaluation
+			//if question has ID, add it to evaluation
+			//if questions doesn't have ID, create it and then add it to evaluation
+		}
+		*/
 
 		// DELETE: api/Evaluation/5
 		[HttpDelete("{id}")]

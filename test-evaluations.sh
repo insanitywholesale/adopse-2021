@@ -83,3 +83,7 @@ curl -X 'POST' \
     ]
   }
 }'
+
+curl -X 'GET' \
+  'http://localhost:5000/api/evaluation' \
+  -H 'accept: text/plain'
