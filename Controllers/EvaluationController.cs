@@ -109,16 +109,12 @@ namespace adopse_2021.Controllers {
 			}
 
 			// Check if an ID was supplied
-			// If not, create question
-			if (mcq.Id < 1) {
-				//TODO: see if answers are saved
+			if (mcq.Id < 1) { // If not, create question
 				_context.MultipleChoiceQuestions.Add(mcq);
-				await _context.SaveChangesAsync();
-				// If yes, load the question
-			} else {
+				await _context.SaveChangesAsync(); //TODO: see if answers are saved
+			} else { // If yes, load the question
 				mcq = await _context.MultipleChoiceQuestions.FindAsync(mcq.Id);
 				_context.Entry(mcq).Reference(x => x.Answers).Load();
-
 			}
 			// No matter what, add the question to the evaluation
 			var e = await _context.Evaluations.FindAsync(id);
@@ -127,16 +123,24 @@ namespace adopse_2021.Controllers {
 			return mcq;
 		}
 
-		/*
 		// POST: api/Evaluation/5/openquestion
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPost("{id}/openquestion")]
-		public async Task<ActionResult<Evaluation>> AddOpenQuestionToEvaluation(OpenQuestion oq) {
-			//TODO: figure out adding questions to Evaluation
-			//if question has ID, add it to evaluation
-			//if questions doesn't have ID, create it and then add it to evaluation
+		public async Task<ActionResult<OpenQuestion>> AddOpenQuestionToEvaluation(long id, OpenQuestion oq) {
+			// Check if an ID was supplied
+			if (oq.Id < 1) { // If not, create question
+				_context.OpenQuestions.Add(oq);
+				await _context.SaveChangesAsync(); //TODO: see if answers are saved
+			} else { // If yes, load the question
+				oq = await _context.OpenQuestions.FindAsync(oq.Id);
+				_context.Entry(oq).Reference(x => x.Answer).Load();
+			}
+			// No matter what, add the question to the evaluation
+			var e = await _context.Evaluations.FindAsync(id);
+			_context.Entry(e).Reference(x => x.Questions).Load();
+			e.Questions.OpenQuestions.Add(oq);
+			return oq;
 		}
-		*/
 
 		// DELETE: api/Evaluation/5
 		[HttpDelete("{id}")]
