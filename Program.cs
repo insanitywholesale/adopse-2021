@@ -24,11 +24,11 @@ builder.Services.AddControllers();
 // Choose between PostgreSQL and In-Memory
 if (builder.Environment.IsDevelopment()) {
 	builder.Services.AddDbContext<EvaluationContext>(options => {
-		options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLConnection"));
+		options.UseInMemoryDatabase("EvaluationRepo");
 	});
 } else {
 	builder.Services.AddDbContext<EvaluationContext>(options => {
-		options.UseInMemoryDatabase("EvaluationRepo");
+		options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLConnection"));
 	});
 }
 
@@ -60,4 +60,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
