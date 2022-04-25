@@ -2,8 +2,6 @@ using adopse_2021.Models;
 
 using Microsoft.EntityFrameworkCore;
 
-using static System.Environment;
-
 var MyAllowSpecificOrigins = "_MyAllowAllPolicy";
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,11 +22,9 @@ builder.Services.AddCors(options => {
 builder.Services.AddControllers();
 
 // Choose between PostgreSQL and In-Memory
-var usePostgres = System.Environment.GetEnvironmentVariable("USE_POSTGRES");
-
-if (usePostgres == "true") {
+if (builder.Environment.IsDevelopment()) {
 	builder.Services.AddDbContext<EvaluationContext>(options => {
-		options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+		options.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLConnection"));
 	});
 } else {
 	builder.Services.AddDbContext<EvaluationContext>(options => {
