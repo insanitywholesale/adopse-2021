@@ -1,0 +1,36 @@
+.home-wrapper 
+{
+    .primary-card
+    {
+        min-height: 100px !important;
+        background-color: var(--color-primary);
+        padding:20px;
+        .email-Form
+        {
+            column-gap: 20px;
+            align-items: center;
+            .primary-button 
+            {
+                background-color: black !important;
+                font-size: 16px !important;
+                min-width: 123px !important;
+                
+            }
+        }
+    }   
+    .feature-card 
+    {
+        border-bottom: 1px solid #000000;
+        border-right: 1px solid #000000;
+        background-color: var(--color-primary);
+        padding-top:40px ;
+        padding-left:40px;
+        padding-right: 140px;
+        padding-bottom: 90px;
+    }
+    .feature-card:nth-child(3)
+    {
+        border-right: 0px ;
+    }
+
+}

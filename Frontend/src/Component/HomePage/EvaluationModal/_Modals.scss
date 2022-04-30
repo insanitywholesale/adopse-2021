@@ -1,0 +1,114 @@
+.steptwo-dialog {
+  .MuiPaper-root {
+    width: 100%;
+    max-width: 900px;
+    background-color: var(--color-primary);
+   
+    .body-wrapper {
+      height: 500px;
+      overflow-y: scroll;
+    }
+    .main-body {
+      width: 700px;
+      padding: 0px 30px;
+    }
+    .inputs-sections {
+      margin-top: 20px;
+
+      .TextArea-input > textarea {
+        background-color: var(--color-basalt-grey);
+        color: white;
+      }
+      .TextArea-input > textarea::placeholder {
+        color: white;
+        opacity: 1;
+      }
+    }
+    .choice-option {
+      background: #747474;
+      outline: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 1px;
+    }
+
+    .choices-inputs {
+      margin-top: 20px;
+      column-gap: 24px;
+      row-gap: 10px;
+      .required-choice {
+        background-color: white;
+        width: 270px;
+        padding: 10px;
+
+        .input-field {
+          border: 0px;
+          outline: 0px;
+          padding-left: 6px;
+        }
+        .selector {
+          height: 20px !important;
+          width: 20px;
+        }
+      }
+
+      .close-icon {
+        border: 1px solid;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.choice-btn {
+  background: var(--color-bank-vault) !important;
+  border-radius: 12px;
+  color: white;
+  font-size: 12px;
+  width: 110px;
+  height: 40px;
+  margin-top: 29px;
+  cursor: pointer;
+  border: 0px;
+}
+
+.evaluation-category {
+  background-color: black;
+  outline: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 1px;
+}
+
+
+
+.showDetail-dialog
+{
+  .MuiPaper-root {
+    width: 100%;
+    max-width: 900px;
+    background-color: var(--color-primary);
+    .Info-Section
+    {
+      
+      color: white;
+      .user-info 
+      {
+        // padding:15px 15px;
+        padding-bottom: 12px;
+          
+          // min-width:420px ;
+          background: var(--color-basalt-grey);
+          
+      }    
+  
+      .attribute-section
+      {
+       
+          // width:800px;
+          background: var(--color-bank-vault);
+      }
+    }
+  }
+}
