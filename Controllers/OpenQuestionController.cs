@@ -42,6 +42,22 @@ namespace adopse_2021.Controllers {
 			return openQuestion;
 		}
 
+		// GET: api/OpenQuestion/5/answer
+		[HttpGet("{id}/answer")]
+		public async Task<ActionResult<OpenAnswer>> GetOpenAnswer(long id) {
+			var openQuestion = await _context.OpenQuestions.FindAsync(id);
+
+			if (openQuestion == null) {
+				return NotFound();
+			}
+
+			// get the idea from here:
+			// https://stackoverflow.com/questions/7348663/c-sharp-entity-framework-how-can-i-combine-a-find-and-include-on-a-model-obje#7348694
+			_context.Entry(openQuestion).Reference(x => x.Answer).Load();
+
+			return openQuestion.Answer;
+		}
+
 		// PUT: api/OpenQuestion/5
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPut("{id}")]
@@ -51,6 +67,29 @@ namespace adopse_2021.Controllers {
 			}
 
 			_context.Entry(openQuestion).State = EntityState.Modified;
+
+			try {
+				await _context.SaveChangesAsync();
+			} catch (DbUpdateConcurrencyException) {
+				if (!OpenQuestionExists(id)) {
+					return NotFound();
+				} else {
+					throw;
+				}
+			}
+
+			return NoContent();
+		}
+
+		// PUT: api/OpenQuestion/5/answer
+		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+		[HttpPut("{id}/answer")]
+		public async Task<IActionResult> PutOpenAnswer(long id, OpenAnswer openAnswer) {
+			if (id != openAnswer.Id) {
+				return BadRequest();
+			}
+
+			_context.Entry(openAnswer).State = EntityState.Modified;
 
 			try {
 				await _context.SaveChangesAsync();
@@ -75,6 +114,27 @@ namespace adopse_2021.Controllers {
 			return CreatedAtAction(nameof(GetOpenQuestion), new { id = openQuestion.Id }, openQuestion);
 		}
 
+		// POST: api/OpenQuestion
+		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+		[HttpPost]
+		public async Task<ActionResult<OpenQuestion>> PostOpenQuestion(OpenQuestion openQuestion) {
+			_context.OpenQuestions.Add(openQuestion);
+			await _context.SaveChangesAsync();
+
+			return CreatedAtAction(nameof(GetOpenQuestion), new { id = openQuestion.Id }, openQuestion);
+		}
+
+		// POST: api/OpenQuestion/5/answer
+		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+		[HttpPost]
+		public async Task<ActionResult<OpenAnswer>> PostOpenAnswer(OpenAnswer openAnswer) {
+			_context.OpenQuestions.Add(openAnswer);
+			await _context.SaveChangesAsync();
+			//TODO: do the Id check thing here
+
+			return CreatedAtAction(nameof(GetOpenAnswer), new { id = openAnswer.Id }, openAnswer);
+		}
+
 		// DELETE: api/OpenQuestion/5
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteOpenQuestion(long id) {
@@ -87,6 +147,10 @@ namespace adopse_2021.Controllers {
 			await _context.SaveChangesAsync();
 
 			return NoContent();
+		}
+
+		private bool OpenQuestionExists(long id) {
+			return _context.OpenQuestions.Any(e => e.Id == id);
 		}
 
 		private bool OpenQuestionExists(long id) {
