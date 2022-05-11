@@ -152,9 +152,5 @@ namespace adopse_2021.Controllers {
 		private bool OpenQuestionExists(long id) {
 			return _context.OpenQuestions.Any(e => e.Id == id);
 		}
-
-		private bool OpenQuestionExists(long id) {
-			return _context.OpenQuestions.Any(e => e.Id == id);
-		}
 	}
 }
