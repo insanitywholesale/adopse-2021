@@ -117,21 +117,29 @@ namespace adopse_2021.Controllers {
 		// POST: api/OpenQuestion/5/answer
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPost("{id}/answer")]
-		public async Task<ActionResult<OpenAnswer>> PostOpenAnswer(OpenAnswer oa) {
+		public async Task<ActionResult<OpenAnswer>> PostOpenAnswer(long id, OpenAnswer oa) {
+			//TODO: fix adding answer to openquestion
+/*
 			// Check if an ID was supplied
-			if (oa.Id < 1) { // If not, create answer
+			if (oa.Id < 1) { // If not, create question
 				_context.OpenAnswers.Add(oa);
 				await _context.SaveChangesAsync(); //TODO: see if answers are saved
 			} else { // If yes, load the question
-				oa = await _context.OpenQuestions.FindAsync(oa.Id);
-				_context.Entry(oa).Load();
+				oa = await _context.OpenAnswers.FindAsync(oa.Id);
 			}
-			//TODO: adjust the following
 			// No matter what, add the question to the evaluation
 			var e = await _context.Evaluations.FindAsync(id);
 			_context.Entry(e).Reference(x => x.Questions).Load();
 			e.Questions.OpenQuestions.Add(oq);
 			return oq;
+*/
+			//TODO: delete following, it's just to avoid warnings/errors
+			var oq = await _context.OpenQuestions.FindAsync(id);
+			oq.Answer = oa;
+			var e = await _context.Evaluations.FindAsync(id);
+			_context.Entry(e).Reference(x => x.Questions).Load();
+			e.Questions.OpenQuestions.Add(oq);
+			return oq.Answer;
 		}
 
 		// DELETE: api/OpenQuestion/5
