@@ -42,6 +42,9 @@ namespace adopse_2021.Models {
 	}
 
 	public class EvaluationEventStatus {
+		// Id is needed otherwise there is an error about entity not having a primary key
+		public long Id { get; set; }
+
 		public bool Active { get; set; } = false;
 		public bool Completed { get; set; } = false;
 	}
