@@ -47,13 +47,9 @@ var app = builder.Build();
 app.UseCors(MyAllowSpecificOrigins);
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment()) {
-	app.UseSwagger();
-	app.UseSwaggerUI();
-} else {
-	// Moved here because we don't need HTTPS in development
-	app.UseHttpsRedirection();
-}
+// Set up swagger docs
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseAuthorization();
 
