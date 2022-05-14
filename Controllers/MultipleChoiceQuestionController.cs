@@ -101,7 +101,7 @@ namespace adopse_2021.Controllers {
 				}
 			}
 
-			return CreatedAtAction("GetMultipleChoiceQuestion", new { id = multipleChoiceQuestion.Id }, multipleChoiceQuestion);
+			return CreatedAtAction(nameof(GetMultipleChoiceQuestion), new { id = multipleChoiceQuestion.Id }, multipleChoiceQuestion);
 		}
 
 		// DELETE: api/MultipleChoiceQuestion/5

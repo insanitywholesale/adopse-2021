@@ -23,7 +23,7 @@ namespace adopse_2021.Controllers {
 		// GET: api/Evaluation
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<Evaluation>>> GetEvaluations() {
-			return await _context.Evaluations.Include(x => x.Questions).ToListAsync();
+			return await _context.Evaluations.Include(x => x.Questions.OpenQuestions).ThenInclude(x => x.Answer).Include(x => x.Questions.MultipleChoiceQuestions).ThenInclude(x => x.Answers).ToListAsync();
 		}
 
 		// GET: api/Evaluation/5
@@ -36,6 +36,22 @@ namespace adopse_2021.Controllers {
 			}
 
 			return evaluation;
+		}
+
+		// GET: api/Evaluation/5/question
+		[HttpGet("{id}/questions")]
+		public async Task<ActionResult<Q>> GetEvaluationQuestions(long id) {
+			var evaluation = await _context.Evaluations.FindAsync(id);
+
+			if (evaluation == null) {
+				return NotFound();
+			}
+
+			if (evaluation.Questions == null) {
+				return NotFound();
+			}
+
+			return evaluation.Questions;
 		}
 
 		// PUT: api/Evaluation/5
@@ -65,10 +81,65 @@ namespace adopse_2021.Controllers {
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPost]
 		public async Task<ActionResult<Evaluation>> PostEvaluation(Evaluation evaluation) {
+			//TODO: calculate grade from questions if grade is not supplied
 			_context.Evaluations.Add(evaluation);
 			await _context.SaveChangesAsync();
 
-			return CreatedAtAction("GetEvaluation", new { id = evaluation.Id }, evaluation);
+			return CreatedAtAction(nameof(GetEvaluation), new { id = evaluation.Id }, evaluation);
+		}
+
+		// POST: api/Evaluation/5/multiplechoicequestion
+		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+		[HttpPost("{id}/multiplechoicequestion")]
+		public async Task<ActionResult<MultipleChoiceQuestion>> AddMultipleChoiceQuestionToEvaluation(long id, MultipleChoiceQuestion mcq) {
+			// If question is graded, check that grade of question totals grade of correct answers is accurate
+			if (mcq.IsGraded == true) {
+				var gradeTotal = 0.0;
+
+				foreach (MultipleChoiceAnswer mca in mcq.Answers) {
+					if (mca.IsCorrectAnswer == true) {
+						gradeTotal += mca.Grade;
+					}
+				}
+
+				// If the correct answer sum grade exceeds the question grade, return bad request
+				if (gradeTotal != mcq.Grade) {
+					return BadRequest();
+				}
+			}
+
+			// Check if an ID was supplied
+			if (mcq.Id < 1) { // If not, create question
+				_context.MultipleChoiceQuestions.Add(mcq);
+				await _context.SaveChangesAsync(); //TODO: see if answers are saved
+			} else { // If yes, load the question
+				mcq = await _context.MultipleChoiceQuestions.FindAsync(mcq.Id);
+				_context.Entry(mcq).Reference(x => x.Answers).Load();
+			}
+			// No matter what, add the question to the evaluation
+			var e = await _context.Evaluations.FindAsync(id);
+			_context.Entry(e).Reference(x => x.Questions).Load();
+			e.Questions.MultipleChoiceQuestions.Add(mcq);
+			return mcq;
+		}
+
+		// POST: api/Evaluation/5/openquestion
+		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+		[HttpPost("{id}/openquestion")]
+		public async Task<ActionResult<OpenQuestion>> AddOpenQuestionToEvaluation(long id, OpenQuestion oq) {
+			// Check if an ID was supplied
+			if (oq.Id < 1) { // If not, create question
+				_context.OpenQuestions.Add(oq);
+				await _context.SaveChangesAsync(); //TODO: see if answers are saved
+			} else { // If yes, load the question
+				oq = await _context.OpenQuestions.FindAsync(oq.Id);
+				_context.Entry(oq).Reference(x => x.Answer).Load();
+			}
+			// No matter what, add the question to the evaluation
+			var e = await _context.Evaluations.FindAsync(id);
+			_context.Entry(e).Reference(x => x.Questions).Load();
+			e.Questions.OpenQuestions.Add(oq);
+			return oq;
 		}
 
 		// DELETE: api/Evaluation/5

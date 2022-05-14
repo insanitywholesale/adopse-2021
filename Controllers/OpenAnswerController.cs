@@ -68,7 +68,7 @@ namespace adopse_2021.Controllers {
 			_context.OpenAnswers.Add(openAnswer);
 			await _context.SaveChangesAsync();
 
-			return CreatedAtAction("GetOpenAnswer", new { id = openAnswer.Id }, openAnswer);
+			return CreatedAtAction(nameof(GetOpenAnswer), new { id = openAnswer.Id }, openAnswer);
 		}
 
 		// DELETE: api/OpenAnswer/5

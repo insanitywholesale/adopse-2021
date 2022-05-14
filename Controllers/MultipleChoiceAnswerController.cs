@@ -68,7 +68,7 @@ namespace adopse_2021.Controllers {
 			_context.MultipleChoiceAnswers.Add(multipleChoiceAnswer);
 			await _context.SaveChangesAsync();
 
-			return CreatedAtAction("GetMultipleChoiceAnswer", new { id = multipleChoiceAnswer.Id }, multipleChoiceAnswer);
+			return CreatedAtAction(nameof(GetMultipleChoiceAnswer), new { id = multipleChoiceAnswer.Id }, multipleChoiceAnswer);
 		}
 
 		// DELETE: api/MultipleChoiceAnswer/5
