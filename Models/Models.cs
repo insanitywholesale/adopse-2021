@@ -19,6 +19,8 @@ namespace adopse_2021.Models {
 		public float Grade { get; set; }
 		public bool IsGraded { get; set; }
 
+		public Person CreatedBy { get; set; }
+
 		public Q Questions { get; set; }
 	}
 
@@ -28,14 +30,20 @@ namespace adopse_2021.Models {
 		[DataType(DataType.Date)]
 		public System.DateTime Date { get; set; }
 
-		public bool Active { get; set; } = false;
-		public bool Completed { get; set; } = false;
+		public EvaluationEventStatus Status { get; set; }
 
 		public Evaluation Evaluation { get; set; }
 
 		public Person Evaluator { get; set; }
 
+		public Person CreatedBy { get; set; }
+
 		public ICollection<EvalueeParticipation> EvalueeParticipations { get; set; }
+	}
+
+	public class EvaluationEventStatus {
+		public bool Active { get; set; } = false;
+		public bool Completed { get; set; } = false;
 	}
 
 	public class EvalueeParticipation {
@@ -52,12 +60,16 @@ namespace adopse_2021.Models {
 		public string Heading { get; set; }
 		public float Grade { get; set; }
 		public bool IsGraded { get; set; }
+
+		public Person CreatedBy { get; set; }
 	}
 
 	public class EvaluationAnswer {
 		public long Id { get; set; }
 		public bool IsCorrectAnswer { get; set; }
 		public float Grade { get; set; }
+
+		public Person CreatedBy { get; set; }
 	}
 
 	public class OpenQuestion : EvaluationQuestion {

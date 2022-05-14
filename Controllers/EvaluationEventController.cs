@@ -20,6 +20,33 @@ namespace adopse_2021.Controllers {
 			_context = context;
 		}
 
+		// GET: api/EvaluationEvent/5/status
+		[HttpGet("{id}/status")]
+		public async Task<ActionResult<EvaluationEventStatus>> GetEvaluationEventStatus(long id) {
+			var evaluationEvent = await _context.EvaluationEvents.FindAsync(id);
+
+			if (evaluationEvent == null) {
+				return NotFound();
+			}
+
+			return evaluationEvent.Status;
+		}
+
+		// PUT: api/EvaluationEvent/5/status
+		[HttpPut("{id}/status")]
+		public async Task<ActionResult<EvaluationEventStatus>> ChangeEvaluationEventStatus(long id, EvaluationEventStatus evaluationEventStatus) {
+			var evaluationEvent = await _context.EvaluationEvents.FindAsync(id);
+
+			if (evaluationEvent == null) {
+				return NotFound();
+			}
+			if ((evaluationEventStatus.Active != evaluationEvent.Status.Active) || (evaluationEventStatus.Completed != evaluationEvent.Status.Completed)) {
+				evaluationEvent.Status = evaluationEventStatus;
+				return evaluationEvent.Status;
+			}
+			return NoContent();
+		}
+
 		// GET: api/EvaluationEvent
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<EvaluationEvent>>> GetEvaluationEvents() {
