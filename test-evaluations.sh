@@ -82,8 +82,8 @@ curl -X 'POST' \
       }
     ]
   }
-}'
+}' | jq
 
 curl -X 'GET' \
   'http://localhost:5000/api/evaluation' \
-  -H 'accept: text/plain'
+  -H 'accept: text/plain' | jq
