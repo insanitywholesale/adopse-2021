@@ -15,6 +15,27 @@ This will install dependencies as well as a few useful command-line tools.
 The following will only install dependencies and not the command-line tools.
 Run `dotnet restore` to make sure dependencies necessary to run the project are installed.
 
+# How to run backend
+
+## Development
+A simple `dotnet run` will start the backend and use the in-memory database
+
+## Production
+This is a little more complicated.
+First, run postgres.
+Docker is an easy way to do it so here is a sample command:
+```
+docker run --rm -p 5432:5432 -e POSTGRES_PASSWORD=Apasswd -e POSTGRES_USER=tester postgres:latest postgres -c log_statement=all
+```
+Then run the migrations in `migrations.sh` to set up the database:
+```
+./migrations.sh
+```
+Finally start the application in production mode:
+```
+dotnet run --launch-profile "adopse_2021-Production"
+```
+
 # Interacting with the web API
 Instructions for how to explore and use the web API.
 
