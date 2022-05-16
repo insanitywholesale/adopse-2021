@@ -1,6 +1,6 @@
 import { CircularProgress } from "@mui/material";
 import { lazy, Suspense } from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, HashRouter as Router, Routes } from "react-router-dom";
 import { useStore } from "../Store/store";
 
 
