@@ -5,7 +5,8 @@ Working Name: BeepBoopEvaluation
 # How to get started working on the project
 Instructions for how to get started with the project for development purposes.
 Use either the script or the dotnet cli command.
-After doing that, run `dotnet run` and wait until the `info` messages appear on the command line
+After doing that, run `dotnet run` and wait until the `info` messages appear on the command line.
+The API server will be running at `http://localhost:5000`.
 
 ## With script
 Run the `install-dependencies.sh` script by running the command `./install-dependencies` from a Git Bash terminal.
