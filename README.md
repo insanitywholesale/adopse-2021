@@ -22,6 +22,8 @@ Run `dotnet restore` to make sure dependencies necessary to run the project are 
 A simple `dotnet run` will start the backend and use the in-memory database
 
 ## Production
+
+### Locally
 This is a little more complicated.
 First, run postgres.
 Docker is an easy way to do it so here is a sample command:
@@ -36,6 +38,9 @@ Finally start the application in production mode:
 ```
 dotnet run --launch-profile "adopse_2021-Production"
 ```
+
+### On VPS
+Might need to change `PostgreSQLConnection` connection string in `appsettings.json`
 
 # Interacting with the web API
 Instructions for how to explore and use the web API.
