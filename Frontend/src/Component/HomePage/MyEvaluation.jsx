@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -12,35 +12,39 @@ import { ActivateModal } from "./ActivateModal";
 import { DeleteModal } from "./DeleteModal";
 
 function MyEvaluation() {
-    const StyledTableCell = styled(TableCell)(({ theme }) => ({
-        [`&.${tableCellClasses.head}`]: {
-          backgroundColor: "#999999;",
-          color: "#000000",
-          fontSize: 18,
-          border: "1px solid",
-        },
-        [`&.${tableCellClasses.body}`]: {
-          border: "1px solid",
-        },
-      }));
-    
-      const rows = [
-        createData("Evaluation 1", "Lorem Ipsum", "Lorem Ipsum"),
-        createData("Evaluation 2", "Lorem Ipsum", "Lorem Ipsum"),
-        createData("Evaluation 3", "Lorem Ipsum", "Lorem Ipsum"),
-      ];
-    
-      function createData(name, type, categories) {
-        return { name, type, categories };
-      }
-    
-      const StyledTableRow = styled(TableRow)(({ theme }) => ({
-        backgroundColor: "#C4C4C4;",
-        textAlign: "center",
-        fontsize: 25,
-        border: "1px solid",
-      }));
-    
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: "#999999;",
+      color: "#000000",
+      fontSize: 18,
+      border: "1px solid",
+    },
+    [`&.${tableCellClasses.body}`]: {
+      border: "1px solid",
+    },
+  }));
+
+  const [data, setData] = useState([]);
+
+  function getevals() {
+    fetch(`https://adopseback.inherently.xyz/api/evaluation`)
+      .then((response) => response.json())
+      .then((evals) => {
+        setData(evals);
+      });
+  }
+
+  (function rungetevals() {
+    getevals();
+  })();
+
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    backgroundColor: "#C4C4C4;",
+    textAlign: "center",
+    fontsize: 25,
+    border: "1px solid",
+  }));
+
   return (
     <>
       <Table className="mt-1">
@@ -60,7 +64,7 @@ function MyEvaluation() {
             </StyledTableCell>
             <StyledTableCell align="left">
               <div className="d-flex align-items-center">
-                Categories
+                No. Of Questions
                 <ArrowDropDownIcon sx={{ fontSize: 40, marginLeft: "-5px" }} />
               </div>
             </StyledTableCell>
@@ -68,13 +72,18 @@ function MyEvaluation() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+          {data.map((row) => (
+            <StyledTableRow key={row.id}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {row.title}
               </StyledTableCell>
-              <StyledTableCell component="th" scope="row"></StyledTableCell>
-              <StyledTableCell component="th" scope="row"></StyledTableCell>
+              <StyledTableCell component="th" scope="row">
+                {row.isGraded ? "graded" : "not graded"}
+              </StyledTableCell>
+              <StyledTableCell component="th" scope="row">
+                {row.questions.openQuestions.length +
+                  row.questions.multipleChoiceQuestions.length}
+              </StyledTableCell>
               <StyledTableCell align="center" component="th" scope="row">
                 <div className="d-flex justify-content-center">
                   <ActivateModal />
