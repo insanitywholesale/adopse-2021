@@ -61,8 +61,7 @@ export const StepOneEval = () => {
             placeholder="Evaluation Name"
           />
 
-          {
-            QArr.length > 0 &&
+          {QArr.length > 0 && (
             <div className="body-wrapper">
               {QArr.map((item) => (
                 <AllQuestions
@@ -71,7 +70,7 @@ export const StepOneEval = () => {
                 />
               ))}
             </div>
-          }
+          )}
 
           {/* <AllQuestions /> */}
 

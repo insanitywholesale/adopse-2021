@@ -41,11 +41,19 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     background: "",
     padding: "10px 12px",
   },
-  ".Mui-disabled":{
-    cursor:'not-allowed'
-  }
+  ".Mui-disabled": {
+    cursor: "not-allowed",
+  },
 }));
-function CommonInput({ name, label, disabledInput, variant,handleChange, type, ...rest }) {
+function CommonInput({
+  name,
+  label,
+  disabledInput,
+  variant,
+  handleChange,
+  type,
+  ...rest
+}) {
   return (
     <BootstrapInput
       name={name}

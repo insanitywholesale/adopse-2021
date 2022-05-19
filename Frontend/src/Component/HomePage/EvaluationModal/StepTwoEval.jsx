@@ -4,7 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import "./_Modals.scss";
 import CommonFormInputs from "../../Common/MaterialInputs/CommonTextArea";
 
-export const StepTwoEval = ({openPopUp,closePopUp}) => {
+export const StepTwoEval = ({ openPopUp, closePopUp }) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -14,12 +14,11 @@ export const StepTwoEval = ({openPopUp,closePopUp}) => {
 
   const handleClose = () => {
     setOpen(false);
-    closePopUp()
+    closePopUp();
   };
-  const handleOnlyCloce = ()=>{
+  const handleOnlyCloce = () => {
     setOpen(false);
-
-  }
+  };
 
   return (
     <div>

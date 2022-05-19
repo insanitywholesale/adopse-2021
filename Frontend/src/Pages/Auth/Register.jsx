@@ -78,7 +78,6 @@ function Register() {
     }
   };
   const handleCheckbox = (e) => {
-    
     if (e.target.checked) {
       setCondition(false);
     } else {
@@ -171,7 +170,7 @@ function Register() {
                   )}
 
                   <div className="d-flex align-items-center mt-30">
-                    <Checkbox name="agree" onChange={handleCheckbox} /> 
+                    <Checkbox name="agree" onChange={handleCheckbox} />
                     <p className="f-20 fw-300">
                       I agree with the terms & conditions
                     </p>

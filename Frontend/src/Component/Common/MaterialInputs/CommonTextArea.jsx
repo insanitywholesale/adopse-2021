@@ -14,13 +14,8 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function CommonFormInputs({placeholder,...rest}) {
-  return (
-    <BootstrapInput
-      placeholder={placeholder}
-      {...rest}
-    />
-  );
+function CommonFormInputs({ placeholder, ...rest }) {
+  return <BootstrapInput placeholder={placeholder} {...rest} />;
 }
 
 export default CommonFormInputs;

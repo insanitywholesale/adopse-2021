@@ -3,13 +3,11 @@ import React, { useState } from "react";
 import CommonFormInputs from "../../Common/MaterialInputs/CommonTextArea";
 import ClearIcon from "@mui/icons-material/Clear";
 
-function AllQuestions({dataItem,hanldeDelete}) {
-
-
-    const [ChoiceArr, setChoiceArr] = useState([]);
-    const [countChoice, setcountChoice] = useState(0);
-    const [ShowQuestion, setShowQuestion] = useState(false);
-    const [enableChoice,setEnableChoice] = useState(true);
+function AllQuestions({ dataItem, hanldeDelete }) {
+  const [ChoiceArr, setChoiceArr] = useState([]);
+  const [countChoice, setcountChoice] = useState(0);
+  const [ShowQuestion, setShowQuestion] = useState(false);
+  const [enableChoice, setEnableChoice] = useState(true);
   const hanldeChoice = (e) => {
     console.log(e.target.value, ":: :: hello");
     switch (e.target.value) {
@@ -34,10 +32,10 @@ function AllQuestions({dataItem,hanldeDelete}) {
     console.log(returnItem);
     setChoiceArr(returnItem);
   };
-  const handleEnableChoice = ()=>{
-      console.log('object');
-      setEnableChoice(!enableChoice)
-  }
+  const handleEnableChoice = () => {
+    console.log("object");
+    setEnableChoice(!enableChoice);
+  };
 
   return (
     <div className="main-body">
@@ -50,7 +48,12 @@ function AllQuestions({dataItem,hanldeDelete}) {
           <option value="mcq">Multiple Choice</option>
           <option value="open">Open</option>
         </select>
-        <button className="remove-rounded-btn"  onClick={()=>hanldeDelete(dataItem)}>-</button>
+        <button
+          className="remove-rounded-btn"
+          onClick={() => hanldeDelete(dataItem)}
+        >
+          -
+        </button>
       </div>
       {ShowQuestion ? (
         <>
@@ -82,19 +85,21 @@ function AllQuestions({dataItem,hanldeDelete}) {
           />
           <div className="d-flex  align-items-center ">
             <p className="f-20">Answer:</p>
-            <select name="category"  className="choice-option ml-2 mr-2">
-              <option >Correct Choice</option>
+            <select name="category" className="choice-option ml-2 mr-2">
+              <option>Correct Choice</option>
               <option value="choice-1">Choice 1</option>
-              
-              {
-                ChoiceArr.map(item => (
-                  <option value="choice-2">Choice {item+2}</option>
-                ))
-              }
+
+              {ChoiceArr.map((item) => (
+                <option value="choice-2">Choice {item + 2}</option>
+              ))}
             </select>
 
             <label className="enable mb-0 ">
-              <input type="checkbox"  onClick={handleEnableChoice} className="required-input" />
+              <input
+                type="checkbox"
+                onClick={handleEnableChoice}
+                className="required-input"
+              />
               <span className="slider round"></span>
             </label>
           </div>
@@ -129,15 +134,15 @@ function AllQuestions({dataItem,hanldeDelete}) {
               </>
             ))}
           </div>
-            {
-                enableChoice ?  <button className="choice-btn " onClick={hanldeInputChoice}  >
-                Add Choice
-              </button> :
-               <button className="choice-btn " style={{cursor:'not-allowed'}}  >
-               Add Choice
-             </button>
-            }
-         
+          {enableChoice ? (
+            <button className="choice-btn " onClick={hanldeInputChoice}>
+              Add Choice
+            </button>
+          ) : (
+            <button className="choice-btn " style={{ cursor: "not-allowed" }}>
+              Add Choice
+            </button>
+          )}
         </>
       )}
       <hr style={{ border: "1px solid #000000" }} />

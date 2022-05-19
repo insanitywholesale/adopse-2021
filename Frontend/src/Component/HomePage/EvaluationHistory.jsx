@@ -13,35 +13,35 @@ import { DeleteModal } from "./DeleteModal";
 import { ShowDetails } from "./EvaluationModal/ShowDetailsModa";
 
 function EvaluationHistory() {
-    const StyledTableCell = styled(TableCell)(({ theme }) => ({
-        [`&.${tableCellClasses.head}`]: {
-          backgroundColor: "#999999;",
-          color: "#000000",
-          fontSize: 18,
-          border: "1px solid",
-        },
-        [`&.${tableCellClasses.body}`]: {
-          border: "1px solid",
-        },
-      }));
-    
-      const rows = [
-        createData("Evaluation 1", "Lorem Ipsum", "Lorem Ipsum"),
-        createData("Evaluation 2", "Lorem Ipsum", "Lorem Ipsum"),
-        createData("Evaluation 3", "Lorem Ipsum", "Lorem Ipsum"),
-      ];
-    
-      function createData(name, type, categories) {
-        return { name, type, categories };
-      }
-    
-      const StyledTableRow = styled(TableRow)(({ theme }) => ({
-        backgroundColor: "#C4C4C4;",
-        textAlign: "center",
-        fontsize: 25,
-        border: "1px solid",
-      }));
-    
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: "#999999;",
+      color: "#000000",
+      fontSize: 18,
+      border: "1px solid",
+    },
+    [`&.${tableCellClasses.body}`]: {
+      border: "1px solid",
+    },
+  }));
+
+  const rows = [
+    createData("Evaluation 1", "Lorem Ipsum", "Lorem Ipsum"),
+    createData("Evaluation 2", "Lorem Ipsum", "Lorem Ipsum"),
+    createData("Evaluation 3", "Lorem Ipsum", "Lorem Ipsum"),
+  ];
+
+  function createData(name, type, categories) {
+    return { name, type, categories };
+  }
+
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    backgroundColor: "#C4C4C4;",
+    textAlign: "center",
+    fontsize: 25,
+    border: "1px solid",
+  }));
+
   return (
     <>
       <Table className="mt-1">
@@ -78,7 +78,6 @@ function EvaluationHistory() {
               <StyledTableCell component="th" scope="row"></StyledTableCell>
               <StyledTableCell align="center" component="th" scope="row">
                 <div className="d-flex justify-content-center">
-                  
                   {/* <Button className="dialog-btns-primary">Show Details</Button> */}
                   <ShowDetails />
                 </div>

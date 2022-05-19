@@ -3,7 +3,7 @@
     width: 100%;
     max-width: 900px;
     background-color: var(--color-primary);
-   
+
     .body-wrapper {
       height: 500px;
       overflow-y: scroll;
@@ -81,33 +81,24 @@
   border-radius: 1px;
 }
 
-
-
-.showDetail-dialog
-{
+.showDetail-dialog {
   .MuiPaper-root {
     width: 100%;
     max-width: 900px;
     background-color: var(--color-primary);
-    .Info-Section
-    {
-      
+    .Info-Section {
       color: white;
-      .user-info 
-      {
+      .user-info {
         // padding:15px 15px;
         padding-bottom: 12px;
-          
-          // min-width:420px ;
-          background: var(--color-basalt-grey);
-          
-      }    
-  
-      .attribute-section
-      {
-       
-          // width:800px;
-          background: var(--color-bank-vault);
+
+        // min-width:420px ;
+        background: var(--color-basalt-grey);
+      }
+
+      .attribute-section {
+        // width:800px;
+        background: var(--color-bank-vault);
       }
     }
   }

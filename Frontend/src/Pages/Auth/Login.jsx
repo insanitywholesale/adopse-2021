@@ -13,17 +13,16 @@ import styled from "@emotion/styled";
 import CommonButton from "../../Component/Common/MaterialInputs/CommonButton";
 import { useStore } from "../../Store/store";
 
-
 function Login() {
   const [EmailError, setEmailError] = useState(false);
   const [PasswordError, setPasswordError] = useState(false);
   const [RememberMe, setRememberMe] = useState(false);
-  const setLogedInState =  useStore(state=>state.setLogedIn)
-  const login =  useStore(state=>state.logedIn)
-  console.log(login,'ola state ')
+  const setLogedInState = useStore((state) => state.setLogedIn);
+  const login = useStore((state) => state.logedIn);
+  console.log(login, "ola state ");
   const handleSubmit = (values) => {
     values.preventDefault();
-    
+
     if (values.target.email.value == "") {
       setEmailError(true);
     }
@@ -32,15 +31,11 @@ function Login() {
     }
     if (!values.target.remember.checked) {
       setRememberMe(true);
+    } else {
+      setLogedInState();
     }
-    
-    else {
-      setLogedInState()
-    }
-
   };
   const handleEmailError = (e) => {
-    
     if (e.target.value != "") {
       setEmailError(false);
     } else {
@@ -48,7 +43,6 @@ function Login() {
     }
   };
   const handlePasswordError = (e) => {
-    
     if (e.target.value != "") {
       setPasswordError(false);
     } else {
@@ -56,7 +50,6 @@ function Login() {
     }
   };
   const handleCheckbox = (e) => {
-    
     if (e.target.checked) {
       setRememberMe(false);
     } else {
@@ -84,7 +77,6 @@ function Login() {
                       className="text-danger text-left mt-1"
                       style={{ width: "375px" }}
                     >
-                      
                       Email is Required
                     </p>
                   )}
@@ -109,14 +101,11 @@ function Login() {
                     <Checkbox name="remember" onChange={handleCheckbox} />
                     <p className="f-20 fw-300">Remember me</p>
                   </div>
-                    {RememberMe && (
-                      <p
-                        className="text-danger text-left mb-3"
-                        
-                      >
-                        Field is Required
-                      </p>
-                    )}
+                  {RememberMe && (
+                    <p className="text-danger text-left mb-3">
+                      Field is Required
+                    </p>
+                  )}
 
                   <CommonButton type="submit" text="Login" />
                   <p className="mt-30 color-splishSplash f-20 fw-300">

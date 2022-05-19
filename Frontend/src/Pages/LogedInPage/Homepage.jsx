@@ -30,7 +30,7 @@ function Homepage() {
           </div>
           <Button className="secondary-button ml-2 ">Join</Button>
         </div>
-        <h3 className='Library-title'>Evaluation Library</h3>
+        <h3 className="Library-title">Evaluation Library</h3>
         {/* 
         {
             /---- Primary Tab and Table ------/

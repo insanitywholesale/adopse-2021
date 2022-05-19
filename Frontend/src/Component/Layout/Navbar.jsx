@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useStore } from "../../Store/store";
 
 function Navbar() {
-  const LogedInUser = useStore(state=>state.logedIn)
-  console.log(LogedInUser)
+  const LogedInUser = useStore((state) => state.logedIn);
+  console.log(LogedInUser);
   const AppRoutes = [
     {
       title: "Home",
@@ -23,7 +23,7 @@ function Navbar() {
       to: "/login",
     },
   ];
-  
+
   const LogedInroutes = [
     {
       title: "Home",
@@ -42,7 +42,7 @@ function Navbar() {
       to: "",
     },
   ];
-  
+
   return (
     <div className="primary-navbar-wrapper">
       <nav className="main-nav">
@@ -50,15 +50,17 @@ function Navbar() {
           <p className="f-40 color-basalt-grey ">Logo</p>
         </div>
         <div className="nav-links ml-28 f-30">
-          { 
-          LogedInUser ?  
-          LogedInroutes.map((route,index) => (
-            <Link to={route.to} key={index} >{route.title} </Link>
-          ))
-          : AppRoutes.map((route,index) => (
-            <Link to={route.to} key={index} >{route.title} </Link>
-          ))
-          }
+          {LogedInUser
+            ? LogedInroutes.map((route, index) => (
+                <Link to={route.to} key={index}>
+                  {route.title}{" "}
+                </Link>
+              ))
+            : AppRoutes.map((route, index) => (
+                <Link to={route.to} key={index}>
+                  {route.title}{" "}
+                </Link>
+              ))}
         </div>
       </nav>
     </div>

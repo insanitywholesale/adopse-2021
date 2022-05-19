@@ -1,4 +1,5 @@
-{/* <div className={`main-body ${FirstQ && 'd-none'}`}>
+{
+  /* <div className={`main-body ${FirstQ && 'd-none'}`}>
 <div className="inputs-sections d-flex justify-content-between">
   <select
     name="category"
@@ -92,4 +93,5 @@
   </>
 )}
 <hr style={{ border: "1px solid #000000" }} />
-</div> */}
+</div> */
+}

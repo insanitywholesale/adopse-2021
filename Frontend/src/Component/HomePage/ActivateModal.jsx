@@ -42,18 +42,15 @@ export const ActivateModal = () => {
       >
         <DialogTitle
           id="alert-dialog-title"
-        //   style={{ borderBottom: "2px solid #efefef" }}
-          className='bottomGrey-border'
+          //   style={{ borderBottom: "2px solid #efefef" }}
+          className="bottomGrey-border"
         >
           <div className="d-flex justify-content-between  align-items-center">
             Evaluation Activated
-            <CloseIcon onClick={handleClose} style={{cursor:'pointer'}} />
+            <CloseIcon onClick={handleClose} style={{ cursor: "pointer" }} />
           </div>
         </DialogTitle>
-        <div
-          className="d-flex justify-content-center p-16 bottomGrey-border"
-          
-        >
+        <div className="d-flex justify-content-center p-16 bottomGrey-border">
           <p>Evaluation key</p>
         </div>
         <DialogActions className="justify-content-center">

@@ -1,20 +1,18 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import CommonButton from "../../Component/Common/MaterialInputs/CommonButton";
 import CommonInput from "../../Component/Common/MaterialInputs/CommonInput";
 import Layout from "../../Layout";
 import "./_home.scss";
 
-const Index = ()=> {
+const Index = () => {
   const [EmailError, setEmailError] = useState(false);
-  const handleSubmit = (e)=>{
-    
-    e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (e.target.email.value == "") {
       setEmailError(true);
     }
-  }
+  };
   const handleEmailError = (e) => {
-    
     if (e.target.value != "") {
       setEmailError(false);
     } else {
@@ -28,29 +26,27 @@ const Index = ()=> {
           <h1 className="f-30 fw-400">Title</h1>
           <p className="f-22 color-basalt-grey mt-17">Description</p>
           <div className="d-flex mt-30 email-Form">
-            <form onSubmit={handleSubmit}> 
+            <form onSubmit={handleSubmit}>
               <CommonInput
                 style={{ width: "392px" }}
                 type="email"
                 label="Email"
                 name="email"
-                className='mr-2'
+                className="mr-2"
                 handleChange={handleEmailError}
-                />
-              
-              <CommonButton text="Register"  />
-              
+              />
+
+              <CommonButton text="Register" />
             </form>
           </div>
           {EmailError && (
-                  <p
-                    className="text-danger text-left mt-1"
-                    style={{ width: "375px" }}
-                  >
-                    
-                    Email is Required
-                  </p>
-                )}
+            <p
+              className="text-danger text-left mt-1"
+              style={{ width: "375px" }}
+            >
+              Email is Required
+            </p>
+          )}
         </div>
 
         <div className="row m-0 bg-color-dhusar-grey mt-180 pb-128">
@@ -80,6 +76,6 @@ const Index = ()=> {
       </div>
     </Layout>
   );
-}
+};
 
 export default Index;

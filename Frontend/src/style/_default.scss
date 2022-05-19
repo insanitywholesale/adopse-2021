@@ -1,27 +1,27 @@
-
-
-
-p,h1,h2,h3,h4,h5,h6{
-    margin: 0px;
-    padding: 0px;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px;
+  padding: 0px;
 }
-body 
-{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: 'Roboto';
-    
-    // background-color: var(--color-SuperSilver);
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Roboto";
+
+  // background-color: var(--color-SuperSilver);
 }
 
-a 
-{
-    text-decoration: none;
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
     color: inherit;
-    &:hover 
-    {
-        color: inherit;
-        text-decoration: none;
-    }
+    text-decoration: none;
+  }
 }
