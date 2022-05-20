@@ -2,6 +2,16 @@
 ergasia adopse earino 2022.
 Working Name: BeepBoopEvaluation
 
+# Deployment
+
+## Frontend
+The frontend is hosted at https://adopsefront.inherently.xyz/
+and the logged-in homepage is at https://adopsefront.inherently.xyz/#/homepage
+
+## Backend
+The backend is hosted at https://adopseback.inherently.xyz/
+and the list of all evaluations is at https://adopseback.inherently.xyz/api/evaluation
+
 # How to get started working on the project
 Instructions for how to get started with the project for development purposes.
 Use either the script or the dotnet cli command.
