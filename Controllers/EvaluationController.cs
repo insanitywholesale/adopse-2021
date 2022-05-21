@@ -81,7 +81,25 @@ namespace adopse_2021.Controllers {
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPost]
 		public async Task<ActionResult<Evaluation>> PostEvaluation(Evaluation evaluation) {
-			//TODO: calculate grade from questions if grade is not supplied
+			if (evaluation.IsGraded == true && evaluation.Grade <= 0) {
+				var gradeTotal = 0.0f;
+				// Calculate grade from questions if grade is not supplied
+				foreach (MultipleChoiceQuestion mcq in evaluation.Questions.MultipleChoiceQuestions) {
+					var mcqGrade = 0.0f;
+					foreach (MultipleChoiceAnswer mca in mcq.Answers) {
+						if (mcq.IsGraded == true && mca.IsCorrectAnswer == true) {
+							mcqGrade += mca.Grade;
+						}
+					}
+					gradeTotal += mcqGrade;
+				}
+				foreach (OpenQuestion oq in evaluation.Questions.OpenQuestions) {
+					if (oq.IsGraded == true) {
+						gradeTotal += oq.Grade;
+					}
+				}
+				evaluation.Grade = gradeTotal;
+			}
 			_context.Evaluations.Add(evaluation);
 			await _context.SaveChangesAsync();
 
@@ -127,6 +145,15 @@ namespace adopse_2021.Controllers {
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 		[HttpPost("{id}/openquestion")]
 		public async Task<ActionResult<OpenQuestion>> AddOpenQuestionToEvaluation(long id, OpenQuestion oq) {
+			// If question is graded, check that the grade is greater than zero
+			if (oq.IsGraded == true && oq.Grade <= 0) {
+				return BadRequest();
+			}
+			// If question is not graded, check that the grade is not greater than zero
+			if (oq.IsGraded == false && oq.Grade > 0) {
+				return BadRequest();
+			}
+
 			// Check if an ID was supplied
 			if (oq.Id < 1) { // If not, create question
 				_context.OpenQuestions.Add(oq);
