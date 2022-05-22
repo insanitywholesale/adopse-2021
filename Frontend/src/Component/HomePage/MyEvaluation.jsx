@@ -302,26 +302,13 @@ function MyEvaluation() {
   ]);
 
   function handlePageChange(event, page) {
-    let link = `https://adopseback.inherently.xyz/api/evaluation/`;
-    let z = page * 3;
-    const evals = [];
-    fetch(link + z)
+    let baselink = `https://adopseback.inherently.xyz/api/evaluation/`;
+    //let baselink = `http://localhost:5000/api/evaluation/`;
+    let link = baselink + page * 3 + "/" + 3;
+    fetch(link)
       .then((response) => response.json())
-      .then((evaluation) => {
-        evals.push(evaluation);
-      });
-    z += 1;
-    fetch(link + z)
-      .then((response) => response.json())
-      .then((evaluation) => {
-        evals.push(evaluation);
-      });
-    z += 1;
-    fetch(link + z)
-      .then((response) => response.json())
-      .then((evaluation) => {
-        evals.push(evaluation);
-        setData([...evals]);
+      .then((evals) => {
+        setData(evals);
       });
   }
 

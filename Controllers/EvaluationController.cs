@@ -26,18 +26,28 @@ namespace adopse_2021.Controllers {
 			return await _context.Evaluations.Include(x => x.Questions.OpenQuestions).ThenInclude(x => x.Answer).Include(x => x.Questions.MultipleChoiceQuestions).ThenInclude(x => x.Answers).ToListAsync();
 		}
 
+		// GET: api/Evaluation/5/10
+		[HttpGet("{offset}/{amount}")]
+		public async Task<ActionResult<IEnumerable<Evaluation>>> GetRangeOfEvaluations(int offset, int amount) {
+			var allevaluations = await _context.Evaluations.Include(x => x.Questions.OpenQuestions).ThenInclude(x => x.Answer).Include(x => x.Questions.MultipleChoiceQuestions).ThenInclude(x => x.Answers).ToListAsync();
+			var evaluations = await _context.Evaluations.Skip(offset).Take(amount).ToListAsync();
+
+			if (evaluations == null) {
+				return NotFound();
+			}
+
+			return evaluations;
+		}
+
 		// GET: api/Evaluation/5
 		[HttpGet("{id}")]
 		public async Task<ActionResult<Evaluation>> GetEvaluation(long id) {
 			var evaluations = await _context.Evaluations.Include(x => x.Questions.OpenQuestions).ThenInclude(x => x.Answer).Include(x => x.Questions.MultipleChoiceQuestions).ThenInclude(x => x.Answers).ToListAsync();
 			var evaluation = await _context.Evaluations.FindAsync(id);
 
-			//var evaluation =  await _context.Evaluations.FindAsync(id);
-
 			if (evaluation == null) {
 				return NotFound();
 			}
-
 
 			return evaluation;
 		}
