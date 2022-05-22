@@ -1,0 +1,9 @@
+{
+  "heading": "%1%",
+  "grade": %2%,
+  "isGraded": %3%,
+  "answer": {
+    "isCorrectAnswer": %4%,
+    "contentFromEvaluee": "%5%"
+  }
+}

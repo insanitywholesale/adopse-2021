@@ -1,0 +1,22 @@
+var1:
+  data:
+   - kind: "word"
+   - type: "silly"
+var2:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 10
+var3:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var4:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var5:
+  data:
+   - kind: "word"
+   - type: "silly"

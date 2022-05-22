@@ -1,0 +1,68 @@
+var1:
+  data:
+   - kind: "word"
+   - type: "silly"
+var2:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 10
+var3:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var4:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var5:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 4
+var6:
+  data:
+   - kind: "word"
+   - type: "silly"
+var7:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var8:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var9:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 3
+var10:
+  data:
+   - kind: "word"
+   - type: "silly"
+var11:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var12:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var13:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 5
+var14:
+  data:
+   - kind: "word"
+   - type: "silly"
+var15:
+  data:
+  - kind: "boolean"
+  - type: "boolean"

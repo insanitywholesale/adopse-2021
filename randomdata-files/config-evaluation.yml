@@ -1,0 +1,163 @@
+var1:
+  data:
+   - kind: "word"
+   - type: "silly"
+var2:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var3:
+  data:
+   - kind: "word"
+   - type: "silly"
+var3:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 10
+var4:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var5:
+  data:
+   - kind: "word"
+   - type: "silly"
+var6:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 10
+var7:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var8:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var9:
+  data:
+   - kind: "word"
+   - type: "silly"
+var10:
+  data:
+   - kind: "word"
+   - type: "silly"
+var11:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var12:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var13:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 5
+var14:
+  data:
+   - kind: "word"
+   - type: "silly"
+var15:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var16:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 5
+var17:
+  data:
+   - kind: "word"
+   - type: "silly"
+var18:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var19:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 5
+var20:
+  data:
+   - kind: "word"
+   - type: "silly"
+var21:
+  data:
+   - kind: "word"
+   - type: "silly"
+var22:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 10
+var23:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+
+var24:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var25:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 5
+var26:
+  data:
+   - kind: "word"
+   - type: "silly"
+var27:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var28:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var29:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 5
+var30:
+  data:
+   - kind: "word"
+   - type: "silly"
+var31:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var32:
+  data:
+  - kind: "boolean"
+  - type: "boolean"
+var33:
+  data:
+  - kind: "number"
+  - range:
+      rangeLow: 1
+      rangeHigh: 5
+var34:
+  data:
+   - kind: "word"
+   - type: "silly"
+var35:
+  data:
+  - kind: "boolean"
+  - type: "boolean"

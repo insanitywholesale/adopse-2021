@@ -1,0 +1,25 @@
+{
+  "heading": "%1%",
+  "grade": %2%,
+  "hasCorrectAnswer": %3%,
+  "answers": [
+    {
+      "isCorrectAnswer": %4%,
+      "grade": %5%,
+      "content": "%6%",
+      "selectedByEvaluee": %7%
+    },
+    {
+      "isCorrectAnswer": %8%,
+      "grade": %9%,
+      "content": "%10%",
+      "selectedByEvaluee": %11%
+    },
+    {
+      "isCorrectAnswer": %12%,
+      "grade": %13%,
+      "content": "%14%",
+      "selectedByEvaluee": %15%
+    }
+  ]
+}
