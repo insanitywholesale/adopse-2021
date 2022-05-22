@@ -24,6 +24,10 @@ function MyEvaluation() {
     },
   }));
 
+useEffect(() => {
+    loadInitialData();
+	  }, []);
+
   const [data, setData] = useState([
     {
       id: 1,
@@ -300,6 +304,18 @@ function MyEvaluation() {
       },
     },
   ]);
+
+  function loadInitialData() {
+    let page = 0;
+    let baselink = `https://adopseback.inherently.xyz/api/evaluation/`;
+    //let baselink = `http://localhost:5000/api/evaluation/`;
+    let link = baselink + page * 3 + "/" + 3;
+    fetch(link)
+      .then((response) => response.json())
+      .then((evals) => {
+        setData(evals);
+      });
+  }
 
   function handlePageChange(event, page) {
     let baselink = `https://adopseback.inherently.xyz/api/evaluation/`;
