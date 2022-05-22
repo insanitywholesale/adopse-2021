@@ -24,7 +24,282 @@ function MyEvaluation() {
     },
   }));
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    {
+      id: 1,
+      title: "Elksage",
+      isGraded: false,
+      questions: {
+        id: 1,
+        openQuestions: [
+          {
+            answer: null,
+            id: 1,
+            heading: "9",
+            grade: 0,
+            isGraded: false,
+          },
+          {
+            answer: {
+              contentFromEvaluee: "Dukepool",
+              id: 1,
+              isCorrectAnswer: false,
+              grade: 0,
+            },
+            id: 2,
+            heading: "Droplaser",
+            grade: 8,
+            isGraded: false,
+          },
+        ],
+        multipleChoiceQuestions: [
+          {
+            hasCorrectAnswer: false,
+            answers: [
+              {
+                content: "Ogresand",
+                selectedByEvaluee: false,
+                id: 1,
+                isCorrectAnswer: false,
+                grade: 1,
+              },
+              {
+                content: "Cranelapis",
+                selectedByEvaluee: false,
+                id: 2,
+                isCorrectAnswer: true,
+                grade: 3,
+              },
+              {
+                content: "Flamecherry",
+                selectedByEvaluee: false,
+                id: 3,
+                isCorrectAnswer: false,
+                grade: 4,
+              },
+            ],
+            id: 1,
+            heading: "Glassberyl",
+            grade: 0,
+            isGraded: false,
+          },
+          {
+            hasCorrectAnswer: false,
+            answers: [
+              {
+                content: "Friendfern",
+                selectedByEvaluee: false,
+                id: 4,
+                isCorrectAnswer: true,
+                grade: 2,
+              },
+              {
+                content: "Wolfzest",
+                selectedByEvaluee: false,
+                id: 5,
+                isCorrectAnswer: true,
+                grade: 3,
+              },
+              {
+                content: "Hairboom",
+                selectedByEvaluee: false,
+                id: 6,
+                isCorrectAnswer: false,
+                grade: 2,
+              },
+            ],
+            id: 2,
+            heading: "Goosecandle",
+            grade: 9,
+            isGraded: false,
+          },
+        ],
+      },
+    },
+    {
+      id: 2,
+      title: "Heroniridescent",
+      grade: 0,
+      isGraded: false,
+      questions: {
+        id: 2,
+        openQuestions: [
+          {
+            answer: null,
+            id: 3,
+            heading: "5",
+            grade: 0,
+            isGraded: true,
+          },
+          {
+            answer: {
+              contentFromEvaluee: "Faceiris",
+              id: 2,
+              isCorrectAnswer: false,
+              grade: 0,
+            },
+            id: 4,
+            heading: "Stalkerpickle",
+            grade: 4,
+            isGraded: true,
+          },
+        ],
+        multipleChoiceQuestions: [
+          {
+            hasCorrectAnswer: false,
+            answers: [
+              {
+                content: "Shakergeode",
+                selectedByEvaluee: false,
+                id: 7,
+                isCorrectAnswer: false,
+                grade: 1,
+              },
+              {
+                content: "Dogribbon",
+                selectedByEvaluee: false,
+                id: 8,
+                isCorrectAnswer: false,
+                grade: 3,
+              },
+              {
+                content: "Banecerulean",
+                selectedByEvaluee: false,
+                id: 9,
+                isCorrectAnswer: true,
+                grade: 2,
+              },
+            ],
+            id: 3,
+            heading: "Browsprout",
+            grade: 0,
+            isGraded: false,
+          },
+          {
+            hasCorrectAnswer: false,
+            answers: [
+              {
+                content: "Keeperlinen",
+                selectedByEvaluee: true,
+                id: 10,
+                isCorrectAnswer: false,
+                grade: 1,
+              },
+              {
+                content: "Cloudplume",
+                selectedByEvaluee: false,
+                id: 11,
+                isCorrectAnswer: false,
+                grade: 2,
+              },
+              {
+                content: "Ladystream",
+                selectedByEvaluee: true,
+                id: 12,
+                isCorrectAnswer: false,
+                grade: 2,
+              },
+            ],
+            id: 4,
+            heading: "Servantshell",
+            grade: 5,
+            isGraded: false,
+          },
+        ],
+      },
+    },
+    {
+      id: 4,
+      title: "Parrotrose",
+      grade: 0,
+      isGraded: false,
+      questions: {
+        id: 4,
+        openQuestions: [
+          {
+            answer: null,
+            id: 7,
+            heading: "7",
+            grade: 0,
+            isGraded: true,
+          },
+          {
+            answer: {
+              contentFromEvaluee: "Kickersteel",
+              id: 4,
+              isCorrectAnswer: false,
+            },
+            id: 8,
+            heading: "Paladinmad",
+            grade: 3,
+            isGraded: true,
+          },
+        ],
+        multipleChoiceQuestions: [
+          {
+            hasCorrectAnswer: false,
+            answers: [
+              {
+                content: "Koalaclever",
+                selectedByEvaluee: false,
+                id: 19,
+                isCorrectAnswer: false,
+                grade: 1,
+              },
+              {
+                content: "Fishcrack",
+                selectedByEvaluee: false,
+                id: 20,
+                isCorrectAnswer: true,
+                grade: 2,
+              },
+              {
+                content: "Mothivory",
+                selectedByEvaluee: false,
+                id: 21,
+                isCorrectAnswer: false,
+                grade: 4,
+              },
+            ],
+            id: 7,
+            heading: "Piratecandy",
+            grade: 0,
+            isGraded: false,
+          },
+          {
+            hasCorrectAnswer: true,
+            answers: [
+              {
+                content: "Molechecker",
+                selectedByEvaluee: false,
+                id: 22,
+                isCorrectAnswer: true,
+                grade: 1,
+              },
+              {
+                content: "Molered",
+                selectedByEvaluee: true,
+                id: 23,
+                isCorrectAnswer: false,
+                grade: 1,
+              },
+              {
+                content: "Trackpool",
+                selectedByEvaluee: true,
+                id: 24,
+                isCorrectAnswer: true,
+                grade: 2,
+              },
+            ],
+            id: 8,
+            heading: "Shriekerjust",
+            grade: 2,
+            isGraded: false,
+          },
+        ],
+      },
+    },
+  ]);
 
   function handlePageChange(event, page) {
     let link = `https://adopseback.inherently.xyz/api/evaluation/`;
