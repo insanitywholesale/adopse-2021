@@ -382,7 +382,6 @@ function MyEvaluation() {
           ))}
         </TableBody>
       </Table>
-      <div>data length {data.length}</div>
       <Pagination
         count={5}
         className="mt-30"
