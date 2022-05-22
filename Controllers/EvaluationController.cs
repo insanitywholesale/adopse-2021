@@ -29,8 +29,8 @@ namespace adopse_2021.Controllers {
 		// GET: api/Evaluation/5/10
 		[HttpGet("{offset}/{amount}")]
 		public async Task<ActionResult<IEnumerable<Evaluation>>> GetRangeOfEvaluations(int offset, int amount) {
-			var allevaluations = await _context.Evaluations.Include(x => x.Questions.OpenQuestions).ThenInclude(x => x.Answer).Include(x => x.Questions.MultipleChoiceQuestions).ThenInclude(x => x.Answers).ToListAsync();
-			var evaluations = await _context.Evaluations.Skip(offset).Take(amount).ToListAsync();
+			//var allevaluations = await _context.Evaluations.Include(x => x.Questions.OpenQuestions).ThenInclude(x => x.Answer).Include(x => x.Questions.MultipleChoiceQuestions).ThenInclude(x => x.Answers).ToListAsync();
+			var evaluations = await _context.Evaluations.Include(x => x.Questions.OpenQuestions).ThenInclude(x => x.Answer).Include(x => x.Questions.MultipleChoiceQuestions).ThenInclude(x => x.Answers).Skip(offset).Take(amount).ToListAsync();
 
 			if (evaluations == null) {
 				return NotFound();
