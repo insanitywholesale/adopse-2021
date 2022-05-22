@@ -26,17 +26,29 @@ function MyEvaluation() {
 
   const [data, setData] = useState([]);
 
-  function getevals() {
-    fetch(`https://adopseback.inherently.xyz/api/evaluation`)
+  function handlePageChange(event, page) {
+    let link = `https://adopseback.inherently.xyz/api/evaluation/`;
+    let z = page * 3;
+    const evals = [];
+    fetch(link + z)
       .then((response) => response.json())
-      .then((evals) => {
-        setData(evals);
+      .then((evaluation) => {
+        evals.push(evaluation);
+      });
+    z += 1;
+    fetch(link + z)
+      .then((response) => response.json())
+      .then((evaluation) => {
+        evals.push(evaluation);
+      });
+    z += 1;
+    fetch(link + z)
+      .then((response) => response.json())
+      .then((evaluation) => {
+        evals.push(evaluation);
+        setData([...evals]);
       });
   }
-
-  (function rungetevals() {
-    getevals();
-  })();
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     backgroundColor: "#C4C4C4;",
@@ -95,11 +107,13 @@ function MyEvaluation() {
           ))}
         </TableBody>
       </Table>
+      <div>data length {data.length}</div>
       <Pagination
         count={5}
         className="mt-30"
         variant="outlined"
         shape="rounded"
+        onChange={handlePageChange}
       />
     </>
   );
