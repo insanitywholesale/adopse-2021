@@ -29,11 +29,15 @@ namespace adopse_2021.Controllers {
 		// GET: api/Evaluation/5
 		[HttpGet("{id}")]
 		public async Task<ActionResult<Evaluation>> GetEvaluation(long id) {
+			var evaluations = await _context.Evaluations.Include(x => x.Questions.OpenQuestions).ThenInclude(x => x.Answer).Include(x => x.Questions.MultipleChoiceQuestions).ThenInclude(x => x.Answers).ToListAsync();
 			var evaluation = await _context.Evaluations.FindAsync(id);
+
+			//var evaluation =  await _context.Evaluations.FindAsync(id);
 
 			if (evaluation == null) {
 				return NotFound();
 			}
+
 
 			return evaluation;
 		}
