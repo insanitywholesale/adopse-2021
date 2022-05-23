@@ -386,7 +386,7 @@ useEffect(() => {
         </TableBody>
       </Table>
       <Pagination
-        count={5}
+        count={10}
         className="mt-30"
         variant="outlined"
         shape="rounded"
