@@ -25,19 +25,34 @@ function EvaluationHistory() {
     },
   }));
 
+  useEffect(() => {
+    loadInitialData();
+  }, []);
+
   const [data, setData] = useState([]);
 
-  function getevals() {
-    fetch(`https://adopseback.inherently.xyz/api/evaluation`)
+  function loadInitialData() {
+    let page = 0;
+    let baselink = `https://adopseback.inherently.xyz/api/evaluation/`;
+    //let baselink = `http://localhost:5000/api/evaluation/`;
+    let link = baselink + page * 3 + "/" + 3;
+    fetch(link)
       .then((response) => response.json())
       .then((evals) => {
         setData(evals);
       });
   }
 
-  (function rungetevals() {
-    getevals();
-  })();
+  function handlePageChange(event, page) {
+    let baselink = `https://adopseback.inherently.xyz/api/evaluation/`;
+    //let baselink = `http://localhost:5000/api/evaluation/`;
+    let link = baselink + page * 3 + "/" + 3;
+    fetch(link)
+      .then((response) => response.json())
+      .then((evals) => {
+        setData(evals);
+      });
+  }
 
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     backgroundColor: "#C4C4C4;",
@@ -96,10 +111,11 @@ function EvaluationHistory() {
         </TableBody>
       </Table>
       <Pagination
-        count={5}
+        count={10}
         className="mt-30"
         variant="outlined"
         shape="rounded"
+        onChange={handlePageChange}
       />
     </>
   );
