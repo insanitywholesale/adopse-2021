@@ -24,9 +24,9 @@ function MyEvaluation() {
     },
   }));
 
-useEffect(() => {
+  useEffect(() => {
     loadInitialData();
-	  }, []);
+  }, []);
 
   const [data, setData] = useState([
     {
