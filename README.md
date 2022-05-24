@@ -6,11 +6,13 @@ Working Name: BeepBoopEvaluation
 
 ## Frontend
 The frontend is hosted at https://adopsefront.inherently.xyz/
-and the logged-in homepage is at https://adopsefront.inherently.xyz/#/homepage
+The logged-in homepage is available at https://adopsefront.inherently.xyz/#/homepage
 
 ## Backend
 The backend is hosted at https://adopseback.inherently.xyz/
-and the list of all evaluations is at https://adopseback.inherently.xyz/api/evaluation
+The list of all evaluations is available at https://adopseback.inherently.xyz/api/evaluation
+The list of all questions is available at https://adopseback.inherently.xyz/api/q
+And the built-in swagger documentation is available at https://adopseback.inherently.xyz/swagger/index.html
 
 # How to get started working on the project
 Instructions for how to get started with the project for development purposes.
