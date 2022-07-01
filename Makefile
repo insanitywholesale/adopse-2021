@@ -4,6 +4,8 @@ clean:
 	dotnet clean
 	rm -rf obj/
 	rm -rf bin/
+	rm -rf node_modules/
+	rm -rf Frontend/node_modules/
 
 getdeps:
 	./install-dependencies.sh
