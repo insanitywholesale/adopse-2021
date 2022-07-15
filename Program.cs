@@ -17,8 +17,7 @@ builder.Services.AddCors(options => {
 		});
 });
 
-// Add services to the container.
-
+// Add services to the container
 builder.Services.AddControllers();
 
 // Choose between PostgreSQL and In-Memory
