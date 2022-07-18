@@ -3,16 +3,17 @@ ergasia adopse earino 2022.
 Working Name: BeepBoopEvaluation
 
 # Deployment
+There are two docker images for this project, one for the backend and one for the fronted and they're deployed to a Linode VPS
 
 ## Frontend
 The frontend is hosted at https://adopsefront.inherently.xyz/
 The logged-in homepage is available at https://adopsefront.inherently.xyz/#/homepage
 
 ## Backend
-The backend is hosted at https://adopseback.inherently.xyz/
-The list of all evaluations is available at https://adopseback.inherently.xyz/api/evaluation
-The list of all questions is available at https://adopseback.inherently.xyz/api/q
-And the built-in swagger documentation is available at https://adopseback.inherently.xyz/swagger/index.html
+The backend is hosted at https://adopseback.inherently.xyz/  
+The list of all evaluations is available at https://adopseback.inherently.xyz/api/evaluation  
+The list of all questions is available at https://adopseback.inherently.xyz/api/q  
+And the built-in swagger documentation is available at https://adopseback.inherently.xyz/swagger/index.html  
 
 # How to get started working on the project
 Instructions for how to get started with the project for development purposes.
