@@ -6,7 +6,7 @@ Working Name: BeepBoopEvaluation
 There are two docker images for this project, one for the backend and one for the fronted and they're deployed to a Linode VPS
 
 ## Frontend
-The frontend is hosted at https://adopsefront.inherently.xyz/
+The frontend is hosted at https://adopsefront.inherently.xyz/  
 The logged-in homepage is available at https://adopsefront.inherently.xyz/#/homepage
 
 ## Backend
