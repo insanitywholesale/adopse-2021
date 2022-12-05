@@ -1,16 +1,16 @@
 # adopse-2021
-ergasia adopse earino 2022.
-Working Name: BeepBoopEvaluation
+ergasia adopse earino 2022.  
+Working Name: BeepBoopEvaluation  
 
 # Deployment
-There are two docker images for this project, one for the backend and one for the fronted and they're deployed to a Linode VPS
+There are two docker images for this project, one for the backend and one for the fronted and they're deployed to a Linode VPS.
 
 ## Warning
 The database has over a million entries so some endpoints are practically unusable
 
 ## Frontend
 The frontend is hosted at https://adopsefront.inherently.xyz/  
-The logged-in homepage is available at https://adopsefront.inherently.xyz/#/homepage
+The logged-in homepage is available at https://adopsefront.inherently.xyz/#/homepage  
 
 ## Backend
 The backend is hosted at https://adopseback.inherently.xyz/  
@@ -33,12 +33,32 @@ The following will only install dependencies and not the command-line tools.
 Run `dotnet restore` to make sure dependencies necessary to run the project are installed.
 
 # How to run backend
+Below there are instructions for running the backend in development and in production
 
 ## Development
-A simple `dotnet run` will start the backend and use the in-memory database
+A simple `dotnet run` will start the backend and use the in-memory database.
 
-### Production
-Shortened `docker-compose.yml`:
+## Production
+Running in production mode is a bit involved but you can do it both locally and remotely.
+
+### Locally
+This is a little more complicated.
+First, run postgres.
+Docker is an easy way to do it so here is a sample command:
+```
+docker run --rm -p 5432:5432 -e POSTGRES_PASSWORD=Apasswd -e POSTGRES_USER=tester postgres:latest postgres -c log_statement=all
+```
+Then run the migrations in `migrations.sh` to set up the database:
+```
+./migrations.sh
+```
+Finally start the application in production mode:
+```
+dotnet run --launch-profile "adopse_2021-Production"
+```
+
+### On VPS
+Shortened `docker-compose.yml` that runs in production:
 ```yaml
 version: "3.7"
 
@@ -71,25 +91,6 @@ services:
      volumes:
        - /home/user/docker/adopse:/var/lib/postgresql/data
 ```
-
-### Locally
-This is a little more complicated.
-First, run postgres.
-Docker is an easy way to do it so here is a sample command:
-```
-docker run --rm -p 5432:5432 -e POSTGRES_PASSWORD=Apasswd -e POSTGRES_USER=tester postgres:latest postgres -c log_statement=all
-```
-Then run the migrations in `migrations.sh` to set up the database:
-```
-./migrations.sh
-```
-Finally start the application in production mode:
-```
-dotnet run --launch-profile "adopse_2021-Production"
-```
-
-### On VPS
-Might need to change `PostgreSQLConnection` connection string in `appsettings.json`
 
 # Interacting with the web API
 Instructions for how to explore and use the web API.
