@@ -11,57 +11,37 @@ exit
 dotnet aspnet-codegenerator controller -async -api \
 	-name PersonController \
 	-m Person \
-	-dc EvaluationContext \
+	-dc QuizContext \
 	-outDir Controllers
 # evaluee participation
 dotnet aspnet-codegenerator controller -async -api \
 	-name EvalueeParticipationController \
 	-m EvalueeParticipation \
-	-dc EvaluationContext \
+	-dc QuizContext \
 	-outDir Controllers
 # evaluation event
 dotnet aspnet-codegenerator controller -async -api \
 	-name EvaluationEventController \
 	-m EvaluationEvent \
-	-dc EvaluationContext \
+	-dc QuizContext \
 	-outDir Controllers
 # evaluation
 dotnet aspnet-codegenerator controller -async -api \
 	-name EvaluationController \
 	-m Evaluation \
-	-dc EvaluationContext \
+	-dc QuizContext \
 	-outDir Controllers
 # questions
 dotnet aspnet-codegenerator controller -async -api \
-	-name OpenQuestionController \
-	-m OpenQuestion \
-	-dc EvaluationContext \
-	-outDir Controllers
-dotnet aspnet-codegenerator controller -async -api \
 	-name MultipleChoiceQuestionController \
 	-m MultipleChoiceQuestion \
-	-dc EvaluationContext \
-	-outDir Controllers
-dotnet aspnet-codegenerator controller -async -api \
-	-name QController \
-	-m Q \
-	-dc EvaluationContext \
+	-dc QuizContext \
 	-outDir Controllers
 # answers
 dotnet aspnet-codegenerator controller -async -api \
-	-name OpenAnswerController \
-	-m OpenAnswer \
-	-dc EvaluationContext \
-	-outDir Controllers
-dotnet aspnet-codegenerator controller -async -api \
 	-name MultipleChoiceAnswerController \
 	-m MultipleChoiceAnswer \
-	-dc EvaluationContext \
-	-outDir Controllers
-dotnet aspnet-codegenerator controller -async -api \
-	-name AController \
-	-m A \
-	-dc EvaluationContext \
+	-dc QuizContext \
 	-outDir Controllers
 
 # needed cause otherwise there are a lot of whitespace changes
