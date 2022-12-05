@@ -37,7 +37,40 @@ Run `dotnet restore` to make sure dependencies necessary to run the project are 
 ## Development
 A simple `dotnet run` will start the backend and use the in-memory database
 
-## Production
+### Production
+Shortened `docker-compose.yml`:
+```yaml
+version: "3.7"
+
+services:
+
+   adopsefront:
+     container_name: adopsefront
+     image: inherently/adopse-frontend:0.0.1
+     restart: unless-stopped
+
+   adopseback:
+     container_name: adopseback
+     image: inherently/adopse-backend:0.0.1
+     restart: unless-stopped
+     security_opt:
+       - no-new-privileges:true
+     environment:
+       - "ASPNETCORE_URLS=http://*:5000"
+       - "ASPNETCORE_ENVIRONMENT=Production"
+
+   adopsedb:
+     container_name: adopsedb
+     image: postgres:latest
+     restart: unless-stopped
+     security_opt:
+       - no-new-privileges:true
+     environment:
+       - POSTGRES_USER=tester
+       - POSTGRES_PASSWORD=Apasswd
+     volumes:
+       - /home/user/docker/adopse:/var/lib/postgresql/data
+```
 
 ### Locally
 This is a little more complicated.
