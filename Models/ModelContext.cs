@@ -1,10 +1,10 @@
-using adopse_2021.Models;
+using BeepBoopQuiz.Models;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace adopse_2021.Models {
-	public class EvaluationContext : DbContext {
-		public EvaluationContext(DbContextOptions<EvaluationContext> options) : base(options) { }
+namespace BeepBoopQuiz.Models {
+	public class QuizContext : DbContext {
+		public QuizContext(DbContextOptions<QuizContext> options) : base(options) { }
 
 		public DbSet<Person> People { get; set; } = null!;
 
@@ -14,13 +14,7 @@ namespace adopse_2021.Models {
 
 		public DbSet<EvalueeParticipation>? EvalueeParticipations { get; set; } = null;
 
-		public DbSet<OpenQuestion> OpenQuestions { get; set; } = null!;
-		public DbSet<OpenAnswer> OpenAnswers { get; set; } = null!;
-
 		public DbSet<MultipleChoiceQuestion> MultipleChoiceQuestions { get; set; } = null!;
 		public DbSet<MultipleChoiceAnswer> MultipleChoiceAnswers { get; set; } = null!;
-
-		public DbSet<Q> Qs { get; set; } = null!;
-		public DbSet<A> As { get; set; } = null!;
 	}
 }

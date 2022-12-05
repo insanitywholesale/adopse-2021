@@ -1,7 +1,7 @@
 #nullable disable
 using System.ComponentModel.DataAnnotations;
 
-namespace adopse_2021.Models {
+namespace BeepBoopQuiz.Models {
 	public class Person {
 		public long Id { get; set; }
 		public string Name { get; set; }
@@ -21,7 +21,7 @@ namespace adopse_2021.Models {
 
 		public Person CreatedBy { get; set; }
 
-		public Q Questions { get; set; }
+		// Questions { get; set; }
 	}
 
 	public class EvaluationEvent {
@@ -41,12 +41,10 @@ namespace adopse_2021.Models {
 		public ICollection<EvalueeParticipation> EvalueeParticipations { get; set; }
 	}
 
-	public class EvaluationEventStatus {
-		// Id is needed otherwise there is an error about entity not having a primary key
-		public long Id { get; set; }
-
-		public bool Active { get; set; } = false;
-		public bool Completed { get; set; } = false;
+	public enum EvaluationEventStatus {
+		None,
+		Active,
+		Completed
 	}
 
 	public class EvalueeParticipation {
@@ -54,8 +52,6 @@ namespace adopse_2021.Models {
 		public float Grade { get; set; }
 
 		public Person Evaluee { get; set; }
-
-		public A Answers { get; set; }
 	}
 
 	public class EvaluationQuestion {
@@ -63,8 +59,6 @@ namespace adopse_2021.Models {
 		public string Heading { get; set; }
 		public float Grade { get; set; }
 		public bool IsGraded { get; set; }
-
-		public Person CreatedBy { get; set; }
 	}
 
 	public class EvaluationAnswer {
@@ -73,14 +67,6 @@ namespace adopse_2021.Models {
 		public float Grade { get; set; }
 
 		public Person CreatedBy { get; set; }
-	}
-
-	public class OpenQuestion : EvaluationQuestion {
-		public OpenAnswer Answer { get; set; }
-	}
-
-	public class OpenAnswer : EvaluationAnswer {
-		public string ContentFromEvaluee { get; set; }
 	}
 
 	public class MultipleChoiceQuestion : EvaluationQuestion {
@@ -92,42 +78,4 @@ namespace adopse_2021.Models {
 		public string Content { get; set; }
 		public bool SelectedByEvaluee { get; set; }
 	}
-
-	public class Q {
-		public long Id { get; set; }
-
-		public ICollection<OpenQuestion> OpenQuestions { get; set; }
-		public ICollection<MultipleChoiceQuestion> MultipleChoiceQuestions { get; set; }
-	}
-
-	public class A {
-		public long Id { get; set; }
-
-		public ICollection<OpenAnswer> OpenAnswers { get; set; }
-		public ICollection<MultipleChoiceAnswer> MultipleChoiceAnswers { get; set; }
-	}
-
-	//TODO: add later
-	//public class FillTheGapQuestion : EvaluationEvent
-	//{
-	//    public string Type => "FillTheGap";
-	//    public int BlanksCount { get; set; }
-	//}
-	//
-	//public class FillTheGapAnswer : EvaluationAnswer
-	//{
-	//    public string Type => "FillTheGap";
-	//    public string? Content { get; set; }
-	//    public int BlankIndex { get; set; }
-	//}
-	//
-	//public class CorrectAnswerQuestion : EvaluationQuestion
-	//{
-	//    public string Type => "CorrectAnswer";
-	//}
-	//
-	//public class CorrectAnswerAnswer : EvaluationAnswer
-	//{
-	//    public string Type => "CorrectAnswer";
-	//}
 }
