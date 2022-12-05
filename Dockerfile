@@ -1,3 +1,4 @@
+#TODO: switch to dotnet 7
 # https://hub.docker.com/_/microsoft-dotnet
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /source
@@ -10,6 +11,7 @@ RUN dotnet restore
 COPY . .
 RUN dotnet publish -c Release -o /app
 
+# TODO: run as non-root user
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
