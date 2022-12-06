@@ -2,6 +2,8 @@
 ergasia adopse earino 2022.  
 Working Name: BeepBoopEvaluation  
 
+Pending rename to **BeepBoopQuiz**
+
 # Deployment
 There are two docker images for this project, one for the backend and one for the fronted and they're deployed to a Linode VPS.
 

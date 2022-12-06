@@ -2,10 +2,10 @@
 
 echo "Controllers have already been generated, no need to run this"
 echo "If you know what you're doing, edit the script"
-exit
+#exit
 
 # delet dis
-#rm Controllers/*
+rm Controllers/*
 
 # person
 dotnet aspnet-codegenerator controller -async -api \
