@@ -25,7 +25,7 @@ namespace BeepBoopQuiz.Controllers {
 			if (_context.MultipleChoiceQuestions == null) {
 				return NotFound();
 			}
-			return await _context.MultipleChoiceQuestions.ToListAsync();
+			return await _context.MultipleChoiceQuestions.Include(x => x.Answers).ToListAsync();
 		}
 
 		// GET: api/MultipleChoiceQuestion/5
@@ -39,6 +39,10 @@ namespace BeepBoopQuiz.Controllers {
 			if (multipleChoiceQuestion == null) {
 				return NotFound();
 			}
+
+			// get the idea from here:
+			// https://stackoverflow.com/questions/7348663/c-sharp-entity-framework-how-can-i-combine-a-find-and-in    clude-on-a-model-obje#7348694
+			_context.Entry(multipleChoiceQuestion).Reference(x => x.Answers).Load();
 
 			return multipleChoiceQuestion;
 		}
@@ -73,6 +77,22 @@ namespace BeepBoopQuiz.Controllers {
 			if (_context.MultipleChoiceQuestions == null) {
 				return Problem("Entity set 'QuizContext.MultipleChoiceQuestions'  is null.");
 			}
+			// If question is graded, check that grade of question totals grade of correct answers is accurate
+			if (multipleChoiceQuestion.IsGraded == true) {
+				var gradeTotal = 0.0;
+
+				foreach (MultipleChoiceAnswer mca in multipleChoiceQuestion.Answers) {
+					if (mca.IsCorrectAnswer == true) {
+						gradeTotal += mca.Grade;
+					}
+				}
+				// If the correct answer sum grade exceeds the question grade, return bad request
+				if (gradeTotal != multipleChoiceQuestion.Grade) {
+
+					return BadRequest();
+				}
+			}
+
 			_context.MultipleChoiceQuestions.Add(multipleChoiceQuestion);
 			await _context.SaveChangesAsync();
 
